@@ -1,0 +1,13 @@
+.container {
+    border: 1px solid blue;
+    height: 500px;
+}
+
+.row {
+    border: 1px solid red;
+    height: 300px;
+}
+
+.column {
+    border: 1px solid green;
+}
