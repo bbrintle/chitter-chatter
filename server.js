@@ -48,12 +48,7 @@ app.get("/api/messages/:id", function(req, res) {
 // POST route for saving a new message
 app.post("/api/messages", function(req, res) {
   console.log(req.body);
-  db.Message.create({
-    message: String,
-    name: String,
-    timeStamp: String,
-    received: Boolean,
-  })
+  db.Message.create(req.body)
     .then(function(dbMessage) {
       res.json(dbMessage);
     });
