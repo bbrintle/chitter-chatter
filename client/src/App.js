@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Pages
 import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 
 //Components
 import Header from "./components/Header";
@@ -17,27 +18,7 @@ function App() {
   return (
     <Router>
       <Header/>
-      <Route exact path="/" component={Home}/>
-
-      <ContainerFluid>
-        <Row>
-          <Col size={"col-4 col-md-3 col-lg-2"}>
-            <Sidebar/>
-          </Col>
-
-          <Col size={"col-8 col-md-9 col-lg-10"}>
-              <Row>
-                <Col size={"col-md-6"}>
-                  LEFT
-                </Col>
-                <Col size={"col-md-6"}>
-                  RIGHT
-                </Col>
-              </Row>
-          </Col>
-        </Row>
-      </ContainerFluid>
-
+      <Route exact path="/" component={Dashboard}/>
     </Router>
   );
 }
