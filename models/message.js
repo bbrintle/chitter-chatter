@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
-const { Schema } = mongoose;
 
-const messageSchema = new Schema({ 
+const messageSchema = mongoose.Schema({ 
     message: String,
     name: String,
     // will be date object
@@ -10,7 +9,6 @@ const messageSchema = new Schema({
     received: Boolean,
   });
 
-const Message = mongoose.model("Message", messageSchema);
 
 // TODO: make sure messagecontents match collection in Mongo DB Atlas
 export default mongoose.model("messagecontents", messageSchema);
