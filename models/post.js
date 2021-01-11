@@ -13,4 +13,4 @@ const postSchema = mongoose.Schema({
     likes:  Number
   });
 
-export default mongoose.model("postContents", postSchema);
+export default mongoose.model("postcontents", postSchema);
