@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
-const { Schema } = mongoose;
 
 // will be creating a post, comments, and messages schema 
 //? posts will be for recognitions, comments to respond to recognitions (unless own schema not necessary?), and messages for dms
 
-const postSchema = new Schema({
+const postSchema = mongoose.Schema({
   // recognition posts 
     recPosts: [{ body: String, date: Date }],
     date: { type: Date, default: Date.now },
@@ -14,6 +13,4 @@ const postSchema = new Schema({
     likes:  Number
   });
 
-const Post = mongoose.model("Post", postSchema);
-
-module.exports = Post;
+export default mongoose.model("postContents", postSchema);

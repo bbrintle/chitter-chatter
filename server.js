@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import Message from "./models/message.js"
 // import routes from "./routes";
 
 const app = express();
@@ -31,11 +32,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/communitychatap
   useFindAndModify: false
 });
 
-// mongoose.connect(`mongodb://<dbuser>:<dbpassword>@ds241658.mlab.com:41658/test_db`,(err)=>{
-// if(err) throw err;
-// console.log(“DB Connected Successfully”);
-// })
-
 // TODO: code for Pusher
 // TODO: declare mongoose.connection
 // TODO: declare collection and changeStream.  Code changeStream function for "change"
@@ -48,8 +44,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/communitychatap
 // Routes for data (i.e. messages, recognition posts, comments on posts (sub-part)
 
 // GET route for getting all messages
-app.get("/api/messages/", function(req, res) {
-  Message.findAll({})
+app.get("/api/messages/all", function(req, res) {
+  Message.find(req.body)
   .then(function(dbMessage) {
     res.json(dbMessage);
   });
@@ -89,6 +85,7 @@ app.delete("/api/messages/:id", function(req, res) {
 });
 
 // PUT route for updating messages
+// ? should this be updateOne or update Many?
 app.put("/api/messages", function(req, res) {
   Message.update(req.body,
     {
