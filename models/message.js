@@ -11,4 +11,4 @@ const messageSchema = mongoose.Schema({
 
 
 // TODO: make sure messagecontents match collection in Mongo DB Atlas
-export default mongoose.model("messageContent", messageSchema);
+export default mongoose.model("messagecontents", messageSchema);
