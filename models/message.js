@@ -12,4 +12,5 @@ const messageSchema = new Schema({
 
 const Message = mongoose.model("Message", messageSchema);
 
-module.exports = Message;
+// TODO: make sure messagecontents match collection in Mongo DB Atlas
+export default mongoose.model("messagecontents", messageSchema);
