@@ -14,21 +14,25 @@ const ChatBox = (props) => {
         MessageService.getAllMessages()
             .then(result => {
                 console.log("in useEffect");
-
+                console.log(result.data);
+                setMessages(result.data);
+                /*
                 const messagesFromResult = [];
                 result.forEach(thisMessage => {
                     //THIS MIGHT BE thiMessage.data
                     messagesFromResult.push(thisMessage);
                 });
+                */
 
-                setMessages(messagesFromResult);
-                console.log(messages);
+               // setMessages(messagesFromResult);
+               //setMessages(result.data.data);
+                
             });
     }, []);
 
     return (
         <ContainerFluid>
-            <Chat messsages={messages}/>
+            <Chat messages={messages}/>
         </ContainerFluid>
     );
 }
