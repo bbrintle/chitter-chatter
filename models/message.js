@@ -5,10 +5,12 @@ const messageSchema = mongoose.Schema({
     name: String,
     // will be date object
     timeStamp: String,
-    // e.g. read message by receiver of msg
-    received: Boolean,
+    chat:[
+      {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"Chat"
+    }
+  ]
   });
 
-
-// TODO: make sure messagecontents match collection in Mongo DB Atlas
-export default mongoose.model("messagecontents", messageSchema);
+export default mongoose.model("message", messageSchema);
