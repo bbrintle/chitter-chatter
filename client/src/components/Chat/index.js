@@ -39,8 +39,8 @@ function Chat(props) {
             <div className='chat_body'>
                 {/* Here we loop through messages and create a new chat bubble for each message. if the .recieved is true,
                  the bubble will be given the className 'chat_reciever' for different styling*/}
-                {messages.map(message => (
-                    <p className={`chat_message ${message.received && "chat_reciever"}`}>
+                {messages.map((message, index) => (
+                    <p key={index} className={`chat_message ${message.received && "chat_reciever"}`}>
                     <span className='chat_name'>{message.name}</span>
                     {message.message}
                     <span className='chat_timestamp'> 

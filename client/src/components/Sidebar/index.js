@@ -1,13 +1,14 @@
 import { ListGroup } from "react-bootstrap";
+import { IndeterminateCheckBox } from "@material-ui/icons";
 
 const Sidebar = () => {
     const sampleUsers = ["bobby", "sally", "smarty head"];
 
     return (
         <ListGroup>
-            {sampleUsers.map(contact => {
+            {sampleUsers.map((contact, index) => {
                 return (
-                    <ListGroup.Item>
+                    <ListGroup.Item key={index}>
                         {contact}
                     </ListGroup.Item>
                 );
