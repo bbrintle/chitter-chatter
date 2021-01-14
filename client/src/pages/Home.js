@@ -2,7 +2,7 @@ import "./style.css";
 
 const Home = () => {
     return (
-        <div></div>
+        <div>PLACEHOLDER HOME</div>
     );
 };
 

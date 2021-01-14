@@ -1,22 +1,10 @@
-//THIS FILE IS CURRENTLY NOT BEING IPMORTED
-//THE REQUIRED PACKAGES (PASSPORT, JWT, AND THE USER MODEL)
-//are being imported in server.js and the following routes are turned into app....(/auth/...)
-//
-
-
-//const express = require("express");
-import express from "express";
+const express = require("express");
 const authRouter = express.Router();
-//const passport = require("passport");
-import passport from "passport";
-//const passportConfig = require("../passport");
-import passportConfig from "../passport";
-//const JWT = require("jsonwebtoken");
-import JWT from "jsonwebtoken";
-//const User = require("../models/User");
-import User from "../models/User.js";
-//const { request, response } = require("express");
-import { request, response } from "express";
+const passport = require("passport");
+const passportConfig = require("../passport");
+const JWT = require("jsonwebtoken");
+const User = require("../models/User");
+const { request, response } = require("express");
 
 //When logging in, use the user ID to return a JWT token.
 const signToken = userID => {
@@ -135,4 +123,4 @@ authRouter.get("/authenticated", passport.authenticate("jwt", {session: false}),
     );
 });
 
-export default authRouter;
+module.exports = authRouter;
