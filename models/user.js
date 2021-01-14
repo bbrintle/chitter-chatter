@@ -1,15 +1,27 @@
-import mongoose from 'mongoose';
-import bcrypt from "bcrypt";
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 
 // !update email and password for authentification
-const userSchema = mongoose.Schema({ 
+const userSchema = new Schema({ 
     username: String,
     // 
     email: String,
     // will be date object
     password: String,
-    role: String
-    
+    role: String,
+    messages: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Message"
+      }
+    ],
+    chats: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Chat"
+      }
+    ]
   });
 
 //Hash the password before saving it. 
@@ -41,4 +53,4 @@ userSchema.methods.comparePassword = function(password, callback) {
   });
 }
 
-export default mongoose.model("user", userSchema);
+module.exports = mongoose.model("User", userSchema);

@@ -1,16 +1,10 @@
 //Configure Passport and JSON Web Tokens.
-//const passport = require("passport");
-import passport from "passport";
-//const LocalStrategy = require("passport-local").Strategy;
-import LocalStrategy from "passport-local";
-LocalStrategy.Strategy;
-//const JwtStrategy = require("passport-jwt").Strategy;
-import JwtStrategy from "passport-jwt";
-JwtStrategy.Strategy;
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const JwtStrategy = require("passport-jwt").Strategy;
 
 //Include User Model
-//const User = require("./models/User");
-import User from "./models/User";
+const User = require("./models/User");
 
 //Extract JWT token from request.
 const cookieExtractor = request => {

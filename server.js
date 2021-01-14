@@ -1,24 +1,18 @@
-import express from "express";
-import mongoose from "mongoose";
-import Message from "./models/Message.js"
-// import routes from "./routes";
+// importing dotenv
+require('dotenv').config()
 
-//Import Passport and JWT
-import passport from "passport";
-import JWT from "jsonwebtoken";
-
-//Include user model
-import User from "./models/User.js";
-
+const express = require("express");
 const app = express();
-// const passport = require("./config/passport");
+const path = require("path");
 const PORT = process.env.PORT || 3001;
 
-// TODO: declare pusher
+//Include user model
+const User = require("./models/User");
+const Message = require("./models/Message");
 
-// importing dotenv
-import dotenv from "dotenv";
-dotenv.config();
+//Set up Cookie Parser.
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +25,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Connect to the Mongo DB
+const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/communitychatapp", 
 {
   useNewUrlParser: true,
@@ -50,6 +45,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/communitychatap
 
 // Routes for data (i.e. messages, recognition posts, comments on posts (sub-part)
 
+
+/*
 //-----AUTH ROUTES----
 
 //When logging in, use the user ID to return a JWT token.
@@ -62,7 +59,7 @@ const signToken = userID => {
 };
 
 //Register a new user.
-app.post("/auth/register", (request, response) => {
+app.post("/register", (request, response) => {
   //Pull out the credential information from the request body.
   const { username, password, email } = request.body;
   //See if this username exists.
@@ -119,7 +116,7 @@ app.post("/auth/register", (request, response) => {
 });
 
 //Log an existing user in (must authenticate).
-app.post("/auth/login", passport.authenticate("local", {session: false}), (request, response) => {
+app.post("/login", passport.authenticate("local", {session: false}), (request, response) => {
   if(request.isAuthenticated()) {
       //If the user is authenticated, pull out the credentials of that user.
       const { _id, username } = request.user;
@@ -146,7 +143,7 @@ app.post("/auth/login", passport.authenticate("local", {session: false}), (reque
 });
 
 //Log a user out using the associated access token.
-app.get("/auth/logout", passport.authenticate("jwt", {session: false}), (request, response) => {
+app.get("/logout", passport.authenticate("jwt", {session: false}), (request, response) => {
   response.clearCookie("access_token");
   response.json(
       {
@@ -159,7 +156,7 @@ app.get("/auth/logout", passport.authenticate("jwt", {session: false}), (request
 });
 
 //Allow the user to remain authenticated.
-app.get("/auth/authenticated", passport.authenticate("jwt", {session: false}), (request, response) => {
+app.get("/authenticated", passport.authenticate("jwt", {session: false}), (request, response) => {
   const { username } = request.user;
   response.status(200).json(
       {
@@ -170,7 +167,7 @@ app.get("/auth/authenticated", passport.authenticate("jwt", {session: false}), (
 });
 
 //-----
-
+*/
 
 // GET route for getting all messages
 app.get("/api/messages/all", function(req, res) {
@@ -228,7 +225,8 @@ app.put("/api/messages", function(req, res) {
 });
 
 // goes to route folder (comment for now, will use later)
-// app.use(routes);
+const authRouter = require("./routes/auth");
+app.use("/auth", authRouter);
 
 // If API routes are not used, use the React app - tells Heroku
 app.use(function(request, response) {
