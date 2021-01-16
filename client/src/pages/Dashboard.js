@@ -1,3 +1,4 @@
+
 //Import grid components
 import ContainerFluid from "../components/ContainerFluid";
 import Row from "../components/Row";
@@ -9,7 +10,10 @@ import ChatBox from "../components/ChatBox";
 
 import "./style.css";
 
+
 const Dashboard = () => {
+
+    
     return (
         <ContainerFluid>
             <Row>
@@ -18,7 +22,7 @@ const Dashboard = () => {
                 </Col>
 
                 <Col size={"col-8 col-md-9 col-lg-10"}>
-                    <ChatBox/>
+                    <ChatBox />
                 </Col>
             </Row>
         </ContainerFluid>
