@@ -1,10 +1,23 @@
 // importing dotenv
 require('dotenv').config()
 
+// import pusher
+const Pusher =require("pusher");
+const cors = require("cors");
+
 const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
+
+// pusher
+const pusher = new Pusher({
+  appId: "1136458",
+  key: "dbb02b01af6775b08146",
+  secret: "2527b07cab60f9376461",
+  cluster: "us3",
+  useTLS: true
+});
 
 //Include user model
 const User = require("./models/User");
@@ -23,18 +36,52 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+app.use(cors())
 
 // Connect to the Mongo DB
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/communitychatapp", 
-{
+const connection_url= "mongodb+srv://admin:pCD1y7lL0Gyf4rTO@cluster0.3x99c.mongodb.net/communitychatapp?retryWrites=true&w=majority"
+mongoose.connect(connection_url,{
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
 });
 
+
 // TODO: code for Pusher
+const db=mongoose.connection
+
+// This will trigger once the mongoose DB has been opened
+db.once('open', ()=>{
+  console.log('BD connected')
+
+  // messagecontent refers to the collection in mongoDB (from dbMessage.js)
+  const msgCollection = db.collection('messages')
+  // changeStream is a method that allows us to watch mongoDB
+  const changeStream = msgCollection.watch()
+  
+  // Using the .watch() from changeStream, we check to see if the DB has had any changes, and then save that change to the variable "change"
+  changeStream.on('change', (change) => {
+    console.log(change)
+      // If the operationType from the change is "insert", pusher will then trigger and send back the Name, Message, Timestap, and Received
+      if(change.operationType === 'insert') {
+          //fullDocument is the area that provides the message _Id, Name, Message, Timestamp, and Reveicved. Save it to the variable "messageDetails"
+          const messageDetails = change.fullDocument;
+          // Trigger pusher and use the 'messages' channel and set the Event to 'inserted' to add the messageDetails
+          pusher.trigger('messages', 'inserted',
+              {
+                  name: messageDetails.name,
+                  message: messageDetails.message,
+                  timestamp: messageDetails.timestamp,
+                  received: messageDetails.received
+              }
+          );
+      } else {
+          console.log("Error triggering Pusher")
+      }
+  })
+})
 // TODO: declare mongoose.connection
 // TODO: declare collection and changeStream.  Code changeStream function for "change"
 
