@@ -12,7 +12,7 @@ const ChatBox = (props) => {
     const [messages, setMessages] = useState([]);
 
      useEffect(()=> {
-      const pusher = new Pusher('dbb02b01af6775b08146', {
+      const pusher = new Pusher('02315d0fbb0283ef5f14', {
         cluster: 'us3'
       });
   
