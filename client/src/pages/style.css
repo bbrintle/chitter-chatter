@@ -1,13 +1,145 @@
-.container {
-    border: 1px solid blue;
-    height: 500px;
+body {
+    font-family: 'Quicksand', sans-serif;
 }
 
-.row {
-    border: 1px solid red;
-    height: 300px;
+.hr-light {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(100,100,100,0), rgba(100,100,100,0.75), rgba(100,100,100,0));
 }
 
-.column {
-    border: 1px solid green;
+.main-display {
+    font-weight: 100 !important;
+    letter-spacing: 0.6rem;
+    color: rgba(0,0,0,0.7);
+    transform: scale(1, 0.9);
 }
+
+.slightly-smaller {
+    font-size: 80%;
+}
+
+.squeezed {
+    transform: scale(1, 0.95);
+}
+
+/*INPUT FORMS*/
+
+.input-credentials {
+    padding-top: 2.0rem;
+    padding-bottom: 2.0rem;
+}
+
+.btn-lg {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+    font-size: 2.2rem;
+}
+
+/*SIGN UP PAGE*/
+
+.pink-button:active, .pink-button:focus, .pink-button:hover  {
+    background-color: #fff;
+    border: 1px solid rgba(220,120,200,1.0);
+    color: rgba(220,120,200,1.0);
+}
+
+.pink-button {
+    background-color: rgba(220,120,200,1.0);
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.pink-border {
+    border: 1px solid rgba(123, 66, 111, 0.5);
+    font-size: 25px;
+}
+
+.pink-border:active, .pink-border:focus {
+    outline: none !important;
+}
+
+.pink-border:active, .pink-border:focus {
+    outline: none !important;
+    border: 1px solid rgba(220,120,200,1.0) !important;
+    box-shadow: 0 0 3px rgba(220,120,200,1.0) !important;
+    -moz-box-shadow: 0 0 3px rgba(220,120,200,1.0) !important;
+    -webkit-box-shadow: 0 0 3px rgba(220,120,200,1.0) !important;
+}
+
+.pink-border::-webkit-input-placeholder {
+    font-size: 100%;
+}
+
+.pink-border:-moz-placeholder { /* Firefox 18- */
+    font-size: 100%;
+}
+
+.pink-border::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 100%;
+}
+
+.pink-border:-ms-input-placeholder {
+    font-size: 100%;
+}
+
+/*INPUT FORMS*/
+
+.input-credentials {
+    padding-top: 2.0rem;
+    padding-bottom: 2.0rem;
+}
+
+.btn-lg {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+    font-size: 2.2rem;
+}
+
+/*LOGIN PAGE*/
+
+.blue-button:active, .blue-button:focus, .blue-button:hover  {
+    background-color: #fff;
+    border: 1px solid rgba(37, 204, 247, 1.0);
+    color: rgba(37, 204, 247, 1.0);
+}
+
+.blue-button {
+    background-color: rgba(37, 204, 247, 1.0);
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.blue-border {
+    border: 1px solid rgb(76, 184, 211);
+    font-size: 25px;
+}
+
+.blue-border:active, .blue-border:focus {
+    outline: none !important;
+}
+
+.blue-border:active, .blue-border:focus {
+    outline: none !important;
+    border: 1px solid rgba(37, 204, 247, 1.0) !important;
+    box-shadow: 0 0 3px rgba(37, 204, 247, 1.0) !important;
+    -moz-box-shadow: 0 0 3px rgba(37, 204, 247, 1.0) !important;
+    -webkit-box-shadow: 0 0 3px rgba(37, 204, 247, 1.0) !important;
+}
+
+.blue-border::-webkit-input-placeholder {
+    font-size: 100%;
+}
+
+.blue-border:-moz-placeholder { /* Firefox 18- */
+    font-size: 100%;
+}
+
+.blue-border::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 100%;
+}
+
+.blue-border:-ms-input-placeholder {
+    font-size: 100%;
+}
+

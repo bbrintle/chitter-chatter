@@ -73,17 +73,20 @@ const Login = (props) => {
         <Header/>
         <Container>
             <form className="mt-5" onSubmit={handleSubmit}>
-                <h3 className="text-center my-4">SIGN IN</h3>
-                <hr className="my-4"/>
-                <div className="form-group">
-                    <input type="text" name="username" onChange={handleChange} className="form-control form-control-lg" placeholder="Username" aria-label="Enter Username" disabled={disabled} required/>
+                <h1 className="text-center my-4 display-1 main-display">
+                    S<span className="slightly-smaller">IGN</span> I<span className="slightly-smaller">N</span>
+                </h1>
+                <hr className="mt-3 mb-5"/>
+                <div className="form-group my-4">
+                    <input type="text" name="username" onChange={handleChange} className="form-control form-control-lg blue-border input-credentials" placeholder="Username" aria-label="Enter Username" disabled={disabled} required/>
                 </div>
-                <div className="form-group">
-                    <input type="password" name="password" onChange={handleChange} className="form-control form-control-lg" placeholder="Password" aria-label="Enter Password" disabled={disabled} required/>
+                <div className="form-group my-4">
+                    <input type="password" name="password" onChange={handleChange} className="form-control form-control-lg blue-border input-credentials" placeholder="Password" aria-label="Enter Password" disabled={disabled} required/>
                 </div>
-                <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={disabled}>
-                    LOG IN
+                <button className="btn btn-lg btn-block blue-button" type="submit" disabled={disabled}>
+                    L<span className="slightly-smaller">ET'S</span> G<span className="slightly-smaller">O</span>! <i className="fas fa-sign-in-alt ml-2"></i>
                 </button>
+                <hr className="hr-light mt-4 mb-5"/>
             </form>
             {message ? <Message message={message}/> : null}
         </Container>
