@@ -1,8 +1,11 @@
+import Header from "../components/Header";
 import "./style.css";
 
 const Home = () => {
     return (
-        <div>PLACEHOLDER HOME</div>
+        <div>
+            <Header/>
+        </div>
     );
 };
 

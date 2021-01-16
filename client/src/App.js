@@ -23,7 +23,6 @@ import PrivateRoute from "./hocs/PrivateRoute";
 function App() {
   return (
     <Router>
-      <Header/>
       <Route exact path="/" component={Home}/>
       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
       <PublicRoute exact path="/login" component={Login}/>
