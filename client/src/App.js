@@ -24,20 +24,7 @@ import PrivateRoute from "./hocs/PrivateRoute";
 
 function App() {
 
-  // const [chatMessages, setChatMessages] = useState([])
-
-  useEffect(()=> {
-    const pusher = new Pusher('dbb02b01af6775b08146', {
-      cluster: 'us3'
-    });
-
-    const channel = pusher.subscribe('messages');
-    channel.bind('inserted', (data) => {
-      alert(JSON.stringify(data));
-    });
-  },[]);
-
-  return (
+return (
     <Router>
       <Route exact path="/" component={Home}/>
       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
