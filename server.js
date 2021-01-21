@@ -40,7 +40,9 @@ app.use(cors())
 
 // Connect to the Mongo DB
 const mongoose = require("mongoose");
+
 const connection_url = `mongodb+srv://admin:${process.env.DB_PASS}@cluster0.2neef.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+
 mongoose.connect(connection_url,{
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -81,8 +83,6 @@ db.once('open', ()=>{
       }
   })
 })
-// TODO: declare mongoose.connection
-// TODO: declare collection and changeStream.  Code changeStream function for "change"
 
 // Add routes, both API and view
 // Routes for user login
