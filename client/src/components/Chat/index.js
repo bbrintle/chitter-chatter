@@ -1,26 +1,27 @@
 import { Avatar, IconButton } from '@material-ui/core'
 import { AttachFile, MoreVert, SearchOutlined, InsertEmoticon, Mic } from '@material-ui/icons'
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from "../../Context/AuthContext";
+import axios from "axios";
+
 //import axios from '../axios';
 import './Chat.css';
 // Messages is provided as a props, so we need to retrieve it via props and then destructure messages out of props
 function Chat(props) {
     const { messages } = props;
     const [input, setInput] = useState("");
+    const authContext = useContext(AuthContext);
 
     const sendMessage = async (event) => {
         event.preventDefault();
-
-        /*
+        console.log(input)
         //Send the input as message using axios
-        await axios.post('/api/messages/new', {
+        await axios.post('/api/messages', {
             message: input,
-            name: "Demo App",
-            timestamp: "Just now!",
-            received: false,
+            name: authContext.user.username,
+            timeStamp: Date,
+            senderID: authContext.user._id
         })
-        */
-
         //Once axios has completed, set the input back to blank
         setInput("");
     }
@@ -40,13 +41,17 @@ function Chat(props) {
                 {/* Here we loop through messages and create a new chat bubble for each message. if the .recieved is true,
                  the bubble will be given the className 'chat_reciever' for different styling*/}
                 {messages.map((message, index) => (
-                    <p key={index} className={`chat_message ${message.received && "chat_reciever"}`}>
+                    <>
+                    <p>{message.senderID}</p>
+                    <p>{authContext.user._id}</p>
+                    <p key={index} className={`chat_message ${message.senderID === authContext.user._id ? "chat_reciever" : ""}`}>
                     <span className='chat_name'>{message.name}</span>
                     {message.message}
                     <span className='chat_timestamp'> 
                         {message.timestamp}
                     </span>
                 </p>
+                </>
                 ))}
                 
             </div>

@@ -84,7 +84,7 @@ authRouter.post("/login", passport.authenticate("local", {session: false}), (req
         response.status(200).json(
             {
                 isAuthenticated: true, 
-                user: { username }
+                user: { username, _id }
             }
         );
     } else {
@@ -105,7 +105,8 @@ authRouter.get("/logout", passport.authenticate("jwt", {session: false}), (reque
     response.json(
         {
             user: {
-                username: ""
+                username: "",
+                _id: ""
             }, 
             success: true
         }
@@ -114,11 +115,11 @@ authRouter.get("/logout", passport.authenticate("jwt", {session: false}), (reque
 
 //Allow the user to remain authenticated.
 authRouter.get("/authenticated", passport.authenticate("jwt", {session: false}), (request, response) => {
-    const { username } = request.user;
+    const { username, _id } = request.user;
     response.status(200).json(
         {
             isAuthenticated: true,
-            user: { username }
+            user: { username, _id }
         }
     );
 });
