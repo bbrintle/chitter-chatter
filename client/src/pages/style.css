@@ -2,6 +2,14 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
+.jumbotron {
+    background-color: rgba(240,240,240,1.0) !important;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    display: none;
+}
+
 .hr-light {
     border: 0;
     height: 1px;
@@ -21,6 +29,10 @@ body {
 
 .squeezed {
     transform: scale(1, 0.95);
+}
+
+.larger-spacing {
+    letter-spacing: 0.5rem;
 }
 
 /*INPUT FORMS*/
@@ -143,3 +155,125 @@ body {
     font-size: 100%;
 }
 
+/*NAVBAR STYLES*/
+
+.navbar {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.navbar-brand {
+    font-size: 250%;
+    transform: scale(1, 0.8);
+}
+
+.navbar-brand-word {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 200;
+    letter-spacing: 0.6rem;
+}
+
+.navbar-brand-box {
+    border-left: 1px solid rgba(200,200,200,1.0);
+}
+
+.chit-chat {
+    color: rgba(40,40,40,1.0);
+    font-weight: 100;
+}
+
+.blue {
+    background-color: rgba(37, 204, 247, 0.2);
+    font-weight: 200;
+}
+
+.pink {
+    background-color: rgba(220,120,200,0.2);
+    font-weight: 200;
+}
+
+.green {
+    background-color: #4cd13733;
+    font-weight: 200;
+}
+
+.yellow {
+    background-color: rgba(251, 197, 49, 0.2);
+    font-weight: 100;
+}
+
+.dark-grey {
+    color: rgba(70,70,70,0.9);
+}
+
+.login-tab {
+    padding-bottom: 3px;
+    border-bottom: 2px solid rgba(37, 204, 247, 0.7);
+}
+
+.register-tab {
+    padding-bottom: 3px;
+    border-bottom: 2px solid rgba(220,120,200,0.7);
+}
+
+.user-tab {
+    padding-bottom: 3px;
+    border-bottom: 2px solid #4cd13766;
+}
+
+.logout-tab {
+    padding-bottom: 1px;
+    border-bottom: 2px solid rgba(251, 197, 49, 0.7);
+}
+
+.nav-item {
+    font-size: 120%;
+}
+
+/*LANDING PAGE*/
+
+.landing-brand {
+
+}
+
+.landing-item {
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.landing-quote {
+    font-weight: 100;
+    letter-spacing: 0.1rem;
+}
+
+/*Media Queries*/
+
+@media screen and (max-width: 575px) {
+    .login-tab, .register-tab, .user-tab, .logout-tab {
+        border-bottom: none !important;
+    }
+}
+
+@media screen and (max-width: 388px) {
+
+    .navbar-brand {
+        margin-left: auto !important; 
+        margin-right: auto !important; 
+        padding-left: auto !important; 
+        padding-right: auto !important; 
+    }
+
+    .navbar-toggler {
+        width: 60%; 
+        margin-left: auto !important; 
+        margin-right: auto !important; 
+        margin-bottom: 5px; 
+    }
+
+}
+
+@media screen and (max-width: 323px) {
+    .navbar-brand {
+        font-size: 190%;
+    }
+}

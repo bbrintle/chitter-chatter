@@ -40,14 +40,15 @@ app.use(cors())
 
 // Connect to the Mongo DB
 const mongoose = require("mongoose");
-const connection_url= `mongodb+srv://admin:${process.env.DB_PASS}@cluster0.2neef.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+
+const connection_url = `mongodb+srv://admin:${process.env.DB_PASS}@cluster0.2neef.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+
 mongoose.connect(connection_url,{
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
 });
-
 
 // TODO: code for Pusher
 const db=mongoose.connection
