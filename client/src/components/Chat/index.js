@@ -21,7 +21,9 @@ function Chat(props) {
             name: authContext.user.username,
             timeStamp: Date,
             senderID: authContext.user._id
-        })
+        });
+        //Now, run parent function to get the messages again and render messages again.
+        props.handlePusher();
         //Once axios has completed, set the input back to blank
         setInput("");
     }
@@ -42,13 +44,13 @@ function Chat(props) {
                  the bubble will be given the className 'chat_reciever' for different styling*/}
                 {messages.map((message, index) => (
                     <>
-                    <p>{message.senderID}</p>
-                    <p>{authContext.user._id}</p>
+                    <p>{message.senderID} - message.senderID</p>
+                    <p>{authContext.user._id} - authContext.user._id</p>
                     <p key={index} className={`chat_message ${message.senderID === authContext.user._id ? "chat_reciever" : ""}`}>
                     <span className='chat_name'>{message.name}</span>
                     {message.message}
                     <span className='chat_timestamp'> 
-                        {message.timestamp}
+                        {message.timeStamp}
                     </span>
                 </p>
                 </>
