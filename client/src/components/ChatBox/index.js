@@ -9,9 +9,24 @@ import MessageService from "../../Services/MessageService";
 
 const ChatBox = (props) => {
 
+    //Hold all messages in state.
     const [messages, setMessages] = useState([]);
 
-     useEffect(()=> {
+    //Function that handles the retrieval of getting all messages currently in db.
+    const getMessages = async() => {
+      await MessageService.getAllMessages()
+            .then(result => {
+                console.log("in useEffect");
+                console.log(result.data);
+                setMessages(result.data);     
+            });
+    };
+    
+    //This function, when called, will get all messages, then configure pusher to bind messages.
+    const handlePusher = () => {
+      //Get messages again.
+      getMessages();
+
       const pusher = new Pusher('02315d0fbb0283ef5f14', {
         cluster: 'us3'
       });
@@ -28,32 +43,16 @@ const ChatBox = (props) => {
         channel.unsubscribe();
       };
       // Make sure the useEffect updates when the 'messages' state updates
-    }, [messages]);
+    }
 
-    
-    useEffect(() => {
-        MessageService.getAllMessages()
-            .then(result => {
-                console.log("in useEffect");
-                console.log(result.data);
-                setMessages(result.data);
-                /*
-                const messagesFromResult = [];
-                result.forEach(thisMessage => {
-                    //THIS MIGHT BE thiMessage.data
-                    messagesFromResult.push(thisMessage);
-                });
-                */
-
-               // setMessages(messagesFromResult);
-               //setMessages(result.data.data);
-                
-            });
-    }, []);
+    //When the page loads, get all messages and configure pusher for the first time. 
+     useEffect(()=> {
+        handlePusher();
+     }, []);
 
     return (
         <ContainerFluid>
-            <Chat messages={messages}/>
+            <Chat messages={messages} handlePusher={handlePusher}/>
         </ContainerFluid>
     );
 }
