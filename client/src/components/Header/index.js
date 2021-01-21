@@ -7,6 +7,11 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavItem from "../NavItem";
 import LogoutButton from "../LogoutButton"
+import NavbarBrand from "../NavbarBrand";
+
+import ContainerFluid from "../ContainerFluid";
+import Row from "../Row";
+import Col from "../Col";
 
 const Header = (props) => {
     const { isAuthenticated, user } = useContext(AuthContext);
@@ -32,8 +37,8 @@ const Header = (props) => {
     };
 
     return (
-        <Navbar className="navbar-light bg-light p-5" expand="md">
-            <Navbar.Brand href="/"><span className="larger-spacing larger-text font-light">COMMUNITY CHAT APP</span></Navbar.Brand>
+        <Navbar className="navbar-light bg-light" expand="sm">
+            <NavbarBrand/>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">

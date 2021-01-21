@@ -1,4 +1,4 @@
-
+import Header from "../components/Header";
 //Import grid components
 import ContainerFluid from "../components/ContainerFluid";
 import Row from "../components/Row";
@@ -15,17 +15,20 @@ const Dashboard = () => {
 
     
     return (
-        <ContainerFluid>
-            <Row>
-                <Col size={"col-4 col-md-3 col-lg-2"}>
-                    <Sidebar/>
-                </Col>
+        <>
+            <Header/>
+            <ContainerFluid>
+                <Row>
+                    <Col size={"col-4 col-md-3 col-lg-2"}>
+                        <Sidebar/>
+                    </Col>
 
-                <Col size={"col-8 col-md-9 col-lg-10"}>
-                    <ChatBox />
-                </Col>
-            </Row>
-        </ContainerFluid>
+                    <Col size={"col-8 col-md-9 col-lg-10"}>
+                        <ChatBox />
+                    </Col>
+                </Row>
+            </ContainerFluid>
+        </>
     );
 };
 
