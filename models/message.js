@@ -8,10 +8,14 @@ const messageSchema = new Schema({
     timeStamp: String,
     chat:[
       {
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"Chat"
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Chat"
+      }
+    ],
+    senderID: {
+      type: String,
+      ref: "User"
     }
-  ]
   });
 
 module.exports = mongoose.model("Message", messageSchema);
