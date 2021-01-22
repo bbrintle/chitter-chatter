@@ -9,9 +9,10 @@ import "./style.css";
 const Home = () => {
     return (
         <div>
-            <div className="text-center">
-                <NavbarBrand isLanding={true}/>
+            <div>
+                <img id="main-logo" src="assets/images/logo.png" alt="CHITTER CHATTER Logo"/>
             </div>
+
             <Jumbotron>
                 <LandingCarousel/>
             </Jumbotron>
