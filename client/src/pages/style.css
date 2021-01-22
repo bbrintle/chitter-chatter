@@ -1,5 +1,5 @@
-body {
-    font-family: 'Quicksand', sans-serif;
+body, .MuiTypography-body1 {
+    font-family: 'Quicksand', sans-serif !important;
 }
 
 .jumbotron {
@@ -230,6 +230,39 @@ body {
     font-size: 120%;
 }
 
+/*SIDEBAR*/
+
+.sidebar-menu-wrapper {
+    padding-top: 5px;
+    border-top: 2px solid rgba(220,120,200,0.7);
+}
+
+.sidebar-contact-wrapper {
+    padding-top: 20px;
+    border-top: 2px solid rgba(37, 204, 247, 0.7);
+}
+
+.list-group-item {
+    font-size: 120%;
+}
+
+.chat-heading {
+    font-weight: 200;
+    letter-spacing: 0.15rem;
+}
+
+.red-line {
+    border-bottom: 2px solid rgba(220,120,200,0.7);
+}
+
+.blue-line {
+    border-bottom: 2px solid rgba(37, 204, 247, 0.7);
+}
+
+.green-line {
+    border-bottom: 2px solid #4cd13766;
+}
+
 /*LANDING PAGE*/
 
 .landing-brand {
@@ -251,6 +284,12 @@ body {
 @media screen and (max-width: 575px) {
     .login-tab, .register-tab, .user-tab, .logout-tab {
         border-bottom: none !important;
+    }
+
+    .list-group-item, #chat-heading-wrapper {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
