@@ -17,6 +17,7 @@ import ContainerFluid from "./components/ContainerFluid";
 import Row from "./components/Row";
 import Col from "./components/Col";
 import Sidebar from "./components/Sidebar";
+import StickyFooter from "./components/StickyFooter";
 
 //Include HOCS
 import PublicRoute from "./hocs/PublicRoute";
@@ -30,6 +31,7 @@ return (
       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
       <PublicRoute exact path="/login" component={Login}/>
       <PublicRoute exact path="/register" component={Register}/>
+      <StickyFooter />
     </Router>
   );
 }
