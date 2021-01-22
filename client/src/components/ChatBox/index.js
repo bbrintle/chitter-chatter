@@ -24,9 +24,6 @@ const ChatBox = (props) => {
     
     //This function, when called, will get all messages, then configure pusher to bind messages.
     const handlePusher = () => {
-      //Get messages again.
-      getMessages();
-
       const pusher = new Pusher('02315d0fbb0283ef5f14', {
         cluster: 'us3'
       });
@@ -34,7 +31,9 @@ const ChatBox = (props) => {
       const channel = pusher.subscribe('messages');
       channel.bind('inserted', (newMessages) => {
         //Add newMessage to the current array of messages
-        setMessages([...messages, newMessages])
+        //setMessages([...messages, newMessages])
+        //Get messages again.
+        getMessages();
       });
       console.log(messages)
       //Unbind and Unsubscribe to prevent multiple connections to pusher and insure that there is only one subscriber at a time
@@ -47,6 +46,7 @@ const ChatBox = (props) => {
 
     //When the page loads, get all messages and configure pusher for the first time. 
      useEffect(()=> {
+        getMessages();
         handlePusher();
      }, []);
 
