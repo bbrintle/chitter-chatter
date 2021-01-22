@@ -19,11 +19,11 @@ const Dashboard = () => {
             <Header/>
             <ContainerFluid>
                 <Row>
-                    <Col size={"col-4 col-md-3 col-lg-2"}>
+                    <Col size={"col-sm-4 col-md-3 col-lg-2"}>
                         <Sidebar/>
                     </Col>
 
-                    <Col size={"col-8 col-md-9 col-lg-10"}>
+                    <Col size={"col-sm-8 col-md-9 col-lg-10"}>
                         <ChatBox />
                     </Col>
                 </Row>

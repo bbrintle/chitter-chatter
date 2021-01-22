@@ -8,7 +8,6 @@
     padding: 20px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid lightgray;
 }
 
 .chat_headerInfo {
@@ -27,26 +26,30 @@
 
 .chat_body {
     flex: 1;
-    background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+    /*background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");*/
+    /*
     background-repeat: repeat;
     background-position: center;
-    padding: 30px;
     overflow: scroll;
+    */
+    padding: 30px;
+    background-color: rgba(240,240,243,1.0);
 }
 
 .chat_message {
     position: relative;
-    font-size: 16px;
+    font-size: 1.5rem;
+    font-weight: 200;
     padding: 10px;
     width: fit-content;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: rgba(255,255,255,1.0);
     margin-bottom: 30px;
 }
 
 .chat_reciever {
     margin-left: auto;
-    background-color: #dcf8c6;
+    background-color: rgba(255,220,245);
 }
 
 .chat_timestamp {
@@ -56,9 +59,9 @@
 
 .chat_name {
     position: absolute;
-    top: -15px;
+    top: -20px;
     font-weight: 800;
-    font-size: xx-small;
+    font-size: small;
 }
 
 .chat_footer {
@@ -79,7 +82,9 @@
     outline-width: 0;
     border-radius: 30px;
     padding: 10px;
-    border: none;
+    margin-top: 20px;
+    border: 1px solid rgba(120,180,120,1.0);
+    font-size: 1.5rem; 
 }
 
 .chat_footer > form > button {

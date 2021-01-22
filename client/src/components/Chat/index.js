@@ -44,16 +44,14 @@ function Chat(props) {
                  the bubble will be given the className 'chat_reciever' for different styling*/}
                 {messages.map((message, index) => (
                     <>
-                    <p>{message.senderID} - message.senderID</p>
-                    <p>{authContext.user._id} - authContext.user._id</p>
-                    <p key={index} className={`chat_message ${message.senderID === authContext.user._id ? "chat_reciever" : ""}`}>
-                    <span className='chat_name'>{message.name}</span>
-                    {message.message}
-                    <span className='chat_timestamp'> 
-                        {message.timeStamp}
-                    </span>
-                </p>
-                </>
+                        <p key={index} className={`chat_message ${message.senderID === authContext.user._id ? "chat_reciever" : ""}`}>
+                        <span className='chat_name'>{message.name}</span>
+                        {message.message}
+                        <span className='chat_timestamp'> 
+                            {message.timeStamp}
+                        </span>
+                        </p>
+                    </>
                 ))}
                 
             </div>
