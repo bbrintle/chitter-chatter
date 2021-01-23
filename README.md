@@ -1,5 +1,17 @@
 # Chitter Chatter App
 
+The URL of the deployed application is [here](https://chitterchatter-app-ed.herokuapp.com/)
+
+**Landing Page**
+<img src="client/public/assets/readme-images/landing.png" width="600">
+
+**Dashboard**
+<img src="client/public/assets/readme-images/dashboard-page.png" width="600">
+
+## GitHub Repo
+
+* The URL of the GitHub repository is [here](https://github.com/bbrintle/community-chat-app)
+
 ## Description
 
 Welcome to Chitter Chatter, a morale booster/community builder app!  We are a small group of web developers looking to create an application for small businesses to help put productivity back in the workplace with our featured chat box and many other features coming soon!
@@ -12,13 +24,9 @@ Welcome to Chitter Chatter, a morale booster/community builder app!  We are a sm
 
 * [Technology](#technology)
 
-* [Deployment](#deployment)
-
-* [Screenshots](#screenshots)
-
 * [Future-updates](#future-updates)
 
-* [Author](#author)
+* [Authors](#authors)
 
 * [Acknowledgements](#acknowledgements)
 
@@ -57,20 +65,7 @@ THEN I am shown that it was sent successfully
 * Passport user authentication
 * Pusher
 
-## Deployment
-
-* The URL of the deployed application is [here](#)
-
-* The URL of the GitHub repository is [here](https://github.com/bbrintle/community-chat-app)
-
-## Screenshots
-* **Landing Page**
-<img src="client/public/assets/readme-images/landing.png" width="600">
-
-* **Dashboard**
-<img src="client/public/assets/readme-images/dashboard.png" width="600">
-
-## Feature-updates
+## Future-updates
 ### Under construction
 
 * High-five reward/kudos system
@@ -81,11 +76,12 @@ THEN I am shown that it was sent successfully
 
 ## Authors
 
-* Brintle, Blake
-* Donohue, Eric
-* Hanson, Michael
-* Reyes, Alejandra
+* Brintle, Blake, [GitHub Profile](https://github.com/bbrintle)
+* Donohue, Eric, [GitHub Profile](https://github.com/edonohue8)
+* Hanson, Michael, [GitHub Profile](https://github.com/mhans003)
+* Reyes, Alejandra, [GitHub Profile](https://github.com/areye022)
 
 ## Acknowledgements
 
-* Our instructor
+* Farish Kashefinejad, [GitHub Profile](https://github.com/farishkash)
+* Juan Ruelas, [GitHub Profile](https://github.com/ChannelJuanNews)
