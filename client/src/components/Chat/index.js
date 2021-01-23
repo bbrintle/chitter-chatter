@@ -9,7 +9,7 @@ function Chat(props) {
     const { messages } = props;
     const [input, setInput] = useState("");
     const authContext = useContext(AuthContext);
-    const lastSeen = messages[messages.length - 1].timeStamp;
+    //const lastSeen = messages[messages.length - 1].timeStamp;
 
     const sendMessage = async (event) => {
         event.preventDefault();
@@ -34,7 +34,7 @@ function Chat(props) {
                 <Avatar />
                 <div className='chat_headerInfo'>
                     <h3>Room Name</h3>
-                    <p>Last message sent: {lastSeen}</p>
+                    <p>Last message sent: </p>
                 </div>
             </div>
 
