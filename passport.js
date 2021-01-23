@@ -4,7 +4,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const JwtStrategy = require("passport-jwt").Strategy;
 
 //Include User Model
-const User = require("./models/User");
+const User = require("./models/user");
 
 //Extract JWT token from request.
 const cookieExtractor = request => {
