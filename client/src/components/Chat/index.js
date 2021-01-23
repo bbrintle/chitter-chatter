@@ -3,23 +3,22 @@ import { AttachFile, MoreVert, SearchOutlined, InsertEmoticon, Mic } from '@mate
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
-
-//import axios from '../axios';
 import './Chat.css';
 // Messages is provided as a props, so we need to retrieve it via props and then destructure messages out of props
 function Chat(props) {
     const { messages } = props;
     const [input, setInput] = useState("");
     const authContext = useContext(AuthContext);
+    const lastSeen = messages[messages.length - 1].timeStamp;
 
     const sendMessage = async (event) => {
         event.preventDefault();
-        console.log(input)
+        const currentTime = new Date().toUTCString();
         //Send the input as message using axios
         await axios.post('/api/messages', {
             message: input,
             name: authContext.user.username,
-            timeStamp: Date,
+            timeStamp: currentTime,
             senderID: authContext.user._id
         });
         //Now, run parent function to get the messages again and render messages again.
@@ -28,18 +27,18 @@ function Chat(props) {
         setInput("");
     }
 
+
     return (
         <div className='chat'>
             <div className="chat_header">
                 <Avatar />
-
                 <div className='chat_headerInfo'>
                     <h3>Room Name</h3>
-                    <p>Last seen at...</p>
+                    <p>Last message sent: {lastSeen}</p>
                 </div>
             </div>
 
-            <div className='chat_body'>
+            <div className='chat_body' id='chat_body'>
                 {/* Here we loop through messages and create a new chat bubble for each message. if the .recieved is true,
                  the bubble will be given the className 'chat_reciever' for different styling*/}
                 {messages.map((message, index) => (
@@ -52,7 +51,8 @@ function Chat(props) {
                         </span>
                         </p>
                     </>
-                ))}
+                ))
+                }
                 
             </div>
 

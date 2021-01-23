@@ -24,12 +24,10 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
-        // !adjust height here
-        minHeight: '70vh',
     },
     main: {
-        marginTop: theme.spacing(8),
-        marginBottom: theme.spacing(2),
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1),
     },
     footer: {
         padding: theme.spacing(3, 2),

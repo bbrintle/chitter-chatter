@@ -12,15 +12,22 @@ const ChatBox = (props) => {
     //Hold all messages in state.
     const [messages, setMessages] = useState([]);
 
+  const scrollBot = () => {
+      let chatBody = document.getElementById("chat_body");
+      chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
     //Function that handles the retrieval of getting all messages currently in db.
     const getMessages = async() => {
       await MessageService.getAllMessages()
             .then(result => {
-                console.log("in useEffect");
-                console.log(result.data);
                 setMessages(result.data);     
             });
+
+      scrollBot();
     };
+
+  
     
     //This function, when called, will get all messages, then configure pusher to bind messages.
     const handlePusher = () => {
@@ -30,12 +37,8 @@ const ChatBox = (props) => {
   
       const channel = pusher.subscribe('messages');
       channel.bind('inserted', (newMessages) => {
-        //Add newMessage to the current array of messages
-        //setMessages([...messages, newMessages])
-        //Get messages again.
         getMessages();
       });
-      console.log(messages)
       //Unbind and Unsubscribe to prevent multiple connections to pusher and insure that there is only one subscriber at a time
       return () => {
         channel.unbind_all();
