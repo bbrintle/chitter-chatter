@@ -21,7 +21,7 @@ const pusher = new Pusher({
 
 //Include user model
 const User = require("./models/user");
-const Message = require("./models/Message");
+const Message = require("./models/message");
 
 //Set up Cookie Parser.
 const cookieParser = require("cookie-parser");
