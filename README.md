@@ -2,10 +2,10 @@
 
 The URL of the deployed application is [here](https://chitterchatter-app-ed.herokuapp.com/)
 
-**Landing Page**
+* **Landing Page**
 <img src="client/public/assets/readme-images/landing.png" width="600">
 
-**Dashboard**
+* **Dashboard**
 <img src="client/public/assets/readme-images/dashboard-page.png" width="600">
 
 ## GitHub Repo
