@@ -5,7 +5,7 @@ const messageSchema = new Schema({
     message: String,
     name: String,
     // will be date object
-    timeStamp: String,
+    timeStamp: Date,
     chat:[
       {
         type:mongoose.Schema.Types.ObjectId,

@@ -5,7 +5,7 @@
 }
 
 .chat_header {
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     display: flex;
     align-items: center;
 }
@@ -26,14 +26,11 @@
 
 .chat_body {
     flex: 1;
-    /*background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");*/
-    /*
-    background-repeat: repeat;
-    background-position: center;
     overflow: scroll;
-    */
     padding: 30px;
     background-color: rgba(240,240,243,1.0);
+    max-height: 600px;
+    scroll
 }
 
 .chat_message {
