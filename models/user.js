@@ -5,23 +5,24 @@ const bcrypt = require("bcrypt");
 // !update email and password for authentification
 const userSchema = new Schema({ 
     username: String,
-    // 
     email: String,
-    // will be date object
     password: String,
-    role: String,
-    messages: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"Message"
-      }
+    //list of all the contacts the user has added
+    contacts: [
+        {
+            userID: String,
+            username: String,
+            userEmail: String,
+        }
     ],
-    chats: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Chat"
-      }
-    ]
+    //list of all the chatrooms the user has added
+    //matches up with Message.chatroomID
+    chatrooms: [
+        {
+            chatroomID: String,
+            chatroomName: String
+        }
+    ],
   });
 
 //Hash the password before saving it. 

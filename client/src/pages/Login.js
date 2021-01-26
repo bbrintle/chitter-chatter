@@ -35,7 +35,6 @@ const Login = (props) => {
                 [event.target.name] : event.target.value
             }
         );
-        console.log(user);
     }
 
     //Handle when the form is submitted.
@@ -63,7 +62,6 @@ const Login = (props) => {
             } else {
                 //Otherise, set an error message.
                 setMessage(message);
-                console.log(data);
             }
         });
     };

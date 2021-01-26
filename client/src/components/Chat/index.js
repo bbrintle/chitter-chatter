@@ -9,17 +9,19 @@ function Chat(props) {
     const { messages } = props;
     const [input, setInput] = useState("");
     const authContext = useContext(AuthContext);
-    const lastSeen = messages[messages.length - 1].timeStamp;
+    //const lastSeen = messages[messages.length - 1].timeStamp;
 
     const sendMessage = async (event) => {
         event.preventDefault();
         const currentTime = new Date().toUTCString();
+        const chatroomID = props.chatroomID
         //Send the input as message using axios
         await axios.post('/api/messages', {
             message: input,
             name: authContext.user.username,
             timeStamp: currentTime,
-            senderID: authContext.user._id
+            senderID: authContext.user._id,
+            chatroomID: chatroomID
         });
         //Now, run parent function to get the messages again and render messages again.
         props.handlePusher();
@@ -34,7 +36,7 @@ function Chat(props) {
                 <Avatar />
                 <div className='chat_headerInfo'>
                     <h3>Room Name</h3>
-                    <p>Last message sent: {lastSeen}</p>
+                    <p>Last message sent: </p>
                 </div>
             </div>
 
@@ -53,7 +55,6 @@ function Chat(props) {
                     </>
                 ))
                 }
-                
             </div>
 
             <div className="chat_footer">

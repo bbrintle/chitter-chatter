@@ -5,12 +5,13 @@ import Chat from "../Chat";
 import Pusher from "pusher-js"
 
 //Include the Message Service.
-import MessageService from "../../Services/MessageService";
+import axios from "axios"
 
 const ChatBox = (props) => {
 
     //Hold all messages in state.
     const [messages, setMessages] = useState([]);
+    console.log(props.chatroomID)
 
   const scrollBot = () => {
       let chatBody = document.getElementById("chat_body");
@@ -19,7 +20,7 @@ const ChatBox = (props) => {
 
     //Function that handles the retrieval of getting all messages currently in db.
     const getMessages = async() => {
-      await MessageService.getAllMessages()
+      await axios.get(`/api/messages/${props.chatroomID}`)
             .then(result => {
                 setMessages(result.data);     
             });
@@ -27,8 +28,6 @@ const ChatBox = (props) => {
       scrollBot();
     };
 
-  
-    
     //This function, when called, will get all messages, then configure pusher to bind messages.
     const handlePusher = () => {
       const pusher = new Pusher('02315d0fbb0283ef5f14', {
@@ -44,7 +43,6 @@ const ChatBox = (props) => {
         channel.unbind_all();
         channel.unsubscribe();
       };
-      // Make sure the useEffect updates when the 'messages' state updates
     }
 
     //When the page loads, get all messages and configure pusher for the first time. 
@@ -55,7 +53,7 @@ const ChatBox = (props) => {
 
     return (
         <ContainerFluid>
-            <Chat messages={messages} handlePusher={handlePusher}/>
+            <Chat messages={messages} handlePusher={handlePusher} chatroomID={props.chatroomID}/>
         </ContainerFluid>
     );
 }

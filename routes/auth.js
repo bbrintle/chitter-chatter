@@ -3,7 +3,7 @@ const authRouter = express.Router();
 const passport = require("passport");
 const passportConfig = require("../passport");
 const JWT = require("jsonwebtoken");
-const User = require("../models/User");
+const User = require("../models/user");
 const { request, response } = require("express");
 
 //When logging in, use the user ID to return a JWT token.
