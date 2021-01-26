@@ -9,7 +9,7 @@ import Header from "../components/Header";
 
 const Register = (props) => {
     //Initialize user state.
-    const [user, setUser] = useState({email: "", username: "", password: ""});
+    const [user, setUser] = useState({email: "", username: "", password: "", contacts: [], chatrooms: []});
     //Initialize message state.
     const [message, setMessage] = useState(null);
     //Set input fields to enabled by default until logged in.
@@ -34,18 +34,6 @@ const Register = (props) => {
             }
         );
     }
-
-    /*
-    const resetForm = () => {
-        setUser(
-            {
-                email: "",
-                username: "", 
-                password: "", 
-            }
-        );
-    }
-    */
 
     //Handle when the form is submitted.
     const handleSubmit = (event) => {
