@@ -15,7 +15,7 @@ import MailboxIcon from '@material-ui/icons/MarkunreadMailbox';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Modal from "react-bootstrap/Modal"
 import SideBarChatrooms from "../SideBarChatrooms/SideBarChatrooms";
-import ChatroomModal from "../ChatroomModal/ChatroomModal"
+import { Link } from 'react-router-dom';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -73,7 +73,6 @@ const Sidebar = () => {
         await axios.get(`/api/chatrooms/all`)
             .then(result => {
                 setChatrooms(result.data);   
-                console.log(chatrooms)  
             });
         
       };
@@ -87,13 +86,14 @@ const Sidebar = () => {
         <>
             <div className="sidebar-menu-wrapper">
                 <ListGroup>
-
-                    <ListItem button>
-                        <ListItemIcon>
-                            <DashboardIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Dashboard" />
-                    </ListItem>
+                    <Link to={`/dashboard/`}>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <DashboardIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Dashboard" />
+                        </ListItem>
+                    </Link>
                     <ListItem button onClick={openModal}>
                         <ListItemIcon>
                             <ChatIcon />
@@ -124,7 +124,7 @@ const Sidebar = () => {
 
             <div className="sidebar-contact-wrapper">
         
-                <SideBarChatrooms chatrooms={chatrooms} />
+                <SideBarChatrooms chatrooms={chatrooms} handlePusherChatroom={handlePusherChatroom}/>
 
                 <Modal show={show} onHide={handleClose} animation={false}>
                     <Modal.Header closeButton>

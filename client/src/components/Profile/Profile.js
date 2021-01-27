@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './Profile.css'
 import axios from 'axios'
 import FoundContacts from "../FoundContacts/FoundContacts"
+import { AuthContext } from "../../Context/AuthContext";
 
 function Profile() {
     const [input, setInput] = useState("");
     const [users, setUsers] = useState([])
     const [show, setShow] = useState(false);
+    const { user } = useContext(AuthContext);
 
     const handleShow = () => setShow(true);
 
@@ -31,7 +33,7 @@ function Profile() {
                 <button onClick={searchForContact} >Search</button>
             </form>
 
-            <FoundContacts users={users} show={show} />
+            <FoundContacts users={users} show={show} currentUser={user}/>
             
         </div>
     )
