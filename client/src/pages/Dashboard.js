@@ -7,14 +7,14 @@ import Col from "../components/Col";
 //Import dashboard components
 import Sidebar from "../components/Sidebar";
 import ChatBox from "../components/ChatBox";
-
 import "./style.css";
 import Profile from "../components/Profile/Profile"
 import { useParams } from "react-router-dom"
 
 
 const Dashboard = () => {
-    const { chatroomID } = useParams();
+    const { chatroomID, chatroomName } = useParams();
+
     return (
         <>
             <Header/>
@@ -25,7 +25,8 @@ const Dashboard = () => {
                     </Col>
 
                     <Col size={"col-sm-8 col-md-9 col-lg-10"}>
-                        <ChatBox chatroomID={chatroomID}/>
+                        {chatroomID ? <ChatBox chatroomID={chatroomID} chatroomName={chatroomName}/> :
+                        <Profile /> } 
                     </Col>
                 </Row>
             </ContainerFluid>

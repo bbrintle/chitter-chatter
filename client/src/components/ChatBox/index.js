@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Container from "../Container";
 import ContainerFluid from "../ContainerFluid";
 import Chat from "../Chat";
 import Pusher from "pusher-js"
@@ -9,10 +8,10 @@ import axios from "axios"
 
 const ChatBox = (props) => {
 
-    //Hold all messages in state.
-    const [messages, setMessages] = useState([]);
-    console.log(props.chatroomID)
-
+  //Hold all messages in state.
+  const [messages, setMessages] = useState([]);
+  const [roomID, setRoomID] = useState("");
+  
   const scrollBot = () => {
       let chatBody = document.getElementById("chat_body");
       chatBody.scrollTop = chatBody.scrollHeight;
@@ -45,6 +44,14 @@ const ChatBox = (props) => {
       };
     }
 
+    useEffect(() => {
+      if(roomID !== props.chatroomID){
+        setRoomID(props.chatroomID)
+        getMessages();
+      }
+
+    }, [props.chatroomID])
+
     //When the page loads, get all messages and configure pusher for the first time. 
      useEffect(()=> {
         getMessages();
@@ -53,7 +60,7 @@ const ChatBox = (props) => {
 
     return (
         <ContainerFluid>
-            <Chat messages={messages} handlePusher={handlePusher} chatroomID={props.chatroomID}/>
+            <Chat messages={messages} handlePusher={handlePusher} chatroomID={props.chatroomID} chatroomName={props.chatroomName}/>
         </ContainerFluid>
     );
 }

@@ -130,6 +130,15 @@ app.post("/api/chatrooms", function(req, res) {
 });
 
 // GET route for getting all Chatboxes
+app.get("/api/chatrooms/getName/:chatroomID", function(req, res) {
+  const chatroomID = req.params.chatroomID;
+  Message.find({ chatroomID: chatroomID })
+  .then(function(dbChatroom) {
+    res.json(dbChatroom);
+  });
+});
+
+// GET route for getting all Chatboxes
 app.get("/api/chatrooms/:id", function(req, res) {
   const id = req.params.id;
   Message.find({ chatroomID: id })
@@ -157,15 +166,25 @@ app.get("/api/users/:email", function(req, res) {
 
 });
 
-// app.post("/api/contact/add", function(req, res) {
-//   const filter = {username: 'bbrintle'};
-//   const update = { contacts: {
-//     userID: req.,
-//     username: ,
-//     userEmail: 
-//   } }
-//   User.findByIdAndUpdate()
-// });
+app.post("/api/contact/add", async function(req, res) {
+  const _id = req.body.currentUser._id;
+  const userContacts = req.body.currentUser.contacts
+  await User.findByIdAndUpdate(_id,{ 
+    contacts: [...userContacts, 
+      {
+      userID: req.body.userID,
+      username: req.body.username,
+      userEmail: req.body.userEmail
+      } 
+    ]
+  }, function (err, docs) {
+    if(err){
+      console.log(err)
+    } else{
+      console.log("Updated User: ", docs)
+    }
+  });
+});
 
 
 

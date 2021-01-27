@@ -1,9 +1,9 @@
 import React from 'react'
 import { ListGroup } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import "./SideBarChatrooms.css"
 
 function SideBarChatrooms({ chatrooms }) {
-    console.log(chatrooms)
     return (
         <div>
             <ListGroup>
@@ -13,7 +13,7 @@ function SideBarChatrooms({ chatrooms }) {
                     
                     {chatrooms.map((chatroom, index) => {
                         return (
-                            <Link to={`/dashboard/${chatroom._id}`}>
+                            <Link to={`/dashboard/${chatroom.chatroomName}/${chatroom._id}`}>
                                 <div>
                                     <ListGroup.Item 
                                         key={index} 

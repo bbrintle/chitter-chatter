@@ -45,10 +45,8 @@ authRouter.post("/register", (request, response) => {
         } else {
             //Otherwise, create the user using the new credentials.
             const newUser = new User({email, username, password});
-            console.log(newUser);
             newUser.save(error => {
                 if(error) {
-                    console.log(error);
                     response.status(500).json(
                         {
                             message: {
@@ -76,7 +74,7 @@ authRouter.post("/register", (request, response) => {
 authRouter.post("/login", passport.authenticate("local", {session: false}), (request, response) => {
     if(request.isAuthenticated()) {
         //If the user is authenticated, pull out the credentials of that user.
-        const { _id, username } = request.user;
+        const { _id, username, email, contacts } = request.user;
         //Create a JWT token since we have signed in.
         const token = signToken(_id);
         //Using the JWT token, set cookie and send authorization.
@@ -84,7 +82,7 @@ authRouter.post("/login", passport.authenticate("local", {session: false}), (req
         response.status(200).json(
             {
                 isAuthenticated: true, 
-                user: { username, _id }
+                user: { _id, username, email, contacts }
             }
         );
     } else {
@@ -115,11 +113,11 @@ authRouter.get("/logout", passport.authenticate("jwt", {session: false}), (reque
 
 //Allow the user to remain authenticated.
 authRouter.get("/authenticated", passport.authenticate("jwt", {session: false}), (request, response) => {
-    const { username, _id } = request.user;
+    const { username, _id, email, contacts } = request.user;
     response.status(200).json(
         {
             isAuthenticated: true,
-            user: { username, _id }
+            user: { _id, username, email, contacts }
         }
     );
 });
