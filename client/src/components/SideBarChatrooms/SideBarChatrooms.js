@@ -13,7 +13,7 @@ function SideBarChatrooms({ chatrooms }) {
                     
                     {chatrooms.map((chatroom, index) => {
                         return (
-                            <Link to={`/dashboard/${chatroom.chatroomName}/${chatroom._id}`}>
+                            <Link to={`/dashboard/${chatroom.chatroomName}/${chatroom._id}`} target="_parent">
                                 <div>
                                     <ListGroup.Item 
                                         key={index} 

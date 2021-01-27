@@ -44,13 +44,13 @@ const ChatBox = (props) => {
       };
     }
 
-    useEffect(() => {
-      if(roomID !== props.chatroomID){
-        setRoomID(props.chatroomID)
-        getMessages();
-      }
+    // useEffect(() => {
+    //   if(roomID !== props.chatroomID){
+    //     setRoomID(props.chatroomID)
+    //     getMessages();
+    //   }
 
-    }, [props.chatroomID])
+    // }, [props.chatroomID])
 
     //When the page loads, get all messages and configure pusher for the first time. 
      useEffect(()=> {
