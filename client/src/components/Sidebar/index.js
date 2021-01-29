@@ -18,6 +18,23 @@ import SideBarChatrooms from "../SideBarChatrooms/SideBarChatrooms";
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
 
+// Theme
+import styled from 'styled-components';
+
+const StyledLink = styled(Link)`
+    padding: 4px 8px;
+    display: block;
+    text-align: center;
+    box-sizing: border-box;
+    margin: auto 0;
+    font-weight: ${p => p.isActive ? 'bold' : 'normal'};
+    color: ${p => p.theme.bodyFontColor};
+`
+
+const SidebarColor = styled.nav`
+    background: ${p => p.theme.bodyBackgroundColor};
+`;
+
 const Sidebar = () => {
     const [chatrooms, setChatrooms] = useState([]);
     const [show, setShow] = useState(false);
@@ -84,43 +101,65 @@ const Sidebar = () => {
     
     return (
         <>
-            <div className="sidebar-menu-wrapper">
-                <ListGroup>
-                    <Link to={`/dashboard/`}>
+             <SidebarColor>
+                <div className="sidebar-menu-wrapper">
+                    <ListGroup>
+                        <Link to={`/dashboard/`}>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <StyledLink>
+                                        <DashboardIcon />
+                                    </StyledLink>
+                                </ListItemIcon>
+                                <StyledLink>
+                                    <ListItemText primary="Dashboard" />
+                                </StyledLink>
+                            </ListItem>
+                        </Link>
+                        <ListItem button onClick={openModal}>
+                            <ListItemIcon>
+                                <StyledLink>
+                                    <ChatIcon />
+                                </StyledLink>
+                            </ListItemIcon>
+                            <StyledLink>
+                                <ListItemText primary="Chatrooms" />
+                            </StyledLink>
+                        </ListItem>
                         <ListItem button>
                             <ListItemIcon>
-                                <DashboardIcon />
+                                <StyledLink>
+                                    <FaceIcon />
+                                </StyledLink>
                             </ListItemIcon>
-                            <ListItemText primary="Dashboard" />
+                            <StyledLink>
+                                <ListItemText primary="My Profile" />
+                            </StyledLink>
                         </ListItem>
-                    </Link>
-                    <ListItem button onClick={openModal}>
-                        <ListItemIcon>
-                            <ChatIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Chatrooms" />
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <FaceIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="My Profile" />
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <MailboxIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Recognition Posts" />
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <SettingsIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Settings" />
-                    </ListItem>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <StyledLink>
+                                    <MailboxIcon />
+                                </StyledLink>
+                            </ListItemIcon>
+                            <StyledLink>
+                                <ListItemText primary="Posts" />
+                            </StyledLink>
+                        </ListItem>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <StyledLink>
+                                    <SettingsIcon />
+                                </StyledLink>
+                            </ListItemIcon>
+                            <StyledLink>
+                                <ListItemText primary="Settings" />
+                            </StyledLink>
+                        </ListItem>
 
-                </ListGroup>
-            </div>
+                    </ListGroup>
+                </div>
+            </SidebarColor>
 
             <div className="sidebar-contact-wrapper">
         
