@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import AuthService from "../../Services/AuthService";
 import { AuthContext } from "../../Context/AuthContext";
 
+// Theme
+import { Toggle } from "../Toggle";
+import {ThemeContext} from 'styled-components';
+
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavItem from "../NavItem";
@@ -15,6 +19,7 @@ import Col from "../Col";
 
 const Header = (props) => {
     const { isAuthenticated, user } = useContext(AuthContext);
+    const {id, setTheme} = useContext(ThemeContext);
 
     //Render the navbar links when not logged in.
     const unauthenticatedNabar = () => {
@@ -43,6 +48,9 @@ const Header = (props) => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
                     { !isAuthenticated ? unauthenticatedNabar() : authenticatedNavbar() }
+                </Nav>
+                <Nav>
+                <Toggle isActive={id === 'dark'} onToggle={setTheme} />
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
