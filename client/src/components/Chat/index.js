@@ -6,7 +6,7 @@ import axios from "axios";
 import './Chat.css';
 // Messages is provided as a props, so we need to retrieve it via props and then destructure messages out of props
 function Chat(props) {
-    const { messages, chatroomID, chatroomName } = props;
+    const { messages, chatroomName } = props;
     const [input, setInput] = useState("");
     const authContext = useContext(AuthContext);
 
@@ -21,7 +21,7 @@ function Chat(props) {
             name: authContext.user.username,
             timeStamp: currentTime,
             senderID: authContext.user._id,
-            chatroomID: chatroomID
+            chatroomID: props.chatroomID
         });
         //Now, run parent function to get the messages again and render messages again.
         props.handlePusher();
