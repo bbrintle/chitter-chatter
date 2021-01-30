@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom"
 
 
 const Dashboard = () => {
-    const { chatroomID, chatroomName } = useParams();
+    const { chatroomID} = useParams();
 
     return (
         <>
@@ -25,7 +25,7 @@ const Dashboard = () => {
                     </Col>
 
                     <Col size={"col-sm-8 col-md-9 col-lg-10"}>
-                        {chatroomID ? <ChatBox chatroomID={chatroomID} chatroomName={chatroomName}/> :
+                        {chatroomID ? <ChatBox  /> :
                         <Profile /> } 
                     </Col>
                 </Row>
