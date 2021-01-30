@@ -8,8 +8,9 @@ import { RoomContext } from "../../Context/RoomContext";
 function SideBarChatrooms({ chatrooms }) {
     const roomContext = useContext(RoomContext);
 
-    const handleRoomChange = (id) => {
+    const handleRoomChange = (id, name) => {
         roomContext.setCurrentRoomID(id);
+        roomContext.setCurrentRoomName(name);
     }
 
     return (
@@ -21,7 +22,7 @@ function SideBarChatrooms({ chatrooms }) {
                     
                     {chatrooms.map((chatroom, index) => {
                         return (
-                            <Link onClick={() => handleRoomChange(chatroom._id)} to={`/dashboard/${chatroom.chatroomName}/${chatroom._id}`}>
+                            <Link onClick={() => handleRoomChange(chatroom._id, chatroom.chatroomName)} to={`/dashboard/${chatroom.chatroomName}/${chatroom._id}`}>
                                 <div>
                                     <ListGroup.Item 
                                         key={index} 
