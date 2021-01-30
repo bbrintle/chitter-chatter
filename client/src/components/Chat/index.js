@@ -41,7 +41,6 @@ function Chat(props) {
         setInput("");
     }
 
-
     return (
         <div className='chat'>
             <div className="chat_header">

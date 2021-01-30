@@ -17,7 +17,6 @@ const ChatBox = (props) => {
   // set initial state of messages
   const [messages, setMessages] = useState([]);
 
-  
 
   useEffect(() => {
   // I wrote an async api call function inside of useEffect to help with scoping
