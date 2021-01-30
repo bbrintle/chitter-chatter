@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ContainerFluid from "../ContainerFluid";
 import Chat from "../Chat";
-import Pusher from "pusher-js"
+import Pusher from "pusher-js";
+import { RoomContext } from "../../Context/RoomContext";
 
 //Include the Message Service.
 import axios from "axios"
 
 const ChatBox = (props) => {
 
+  const roomContext = useContext(RoomContext);
+
   //Hold all messages in state.
   const [messages, setMessages] = useState([]);
-  const [roomID, setRoomID] = useState("");
+  //const [roomID, setRoomID] = useState("");
   
   const scrollBot = () => {
       let chatBody = document.getElementById("chat_body");
@@ -19,7 +22,7 @@ const ChatBox = (props) => {
 
     //Function that handles the retrieval of getting all messages currently in db.
     const getMessages = async() => {
-      await axios.get(`/api/messages/${props.chatroomID}`)
+      await axios.get(`/api/messages/${roomContext.currentRoomID}`)
             .then(result => {
                 setMessages(result.data);     
             });
@@ -53,14 +56,22 @@ const ChatBox = (props) => {
     // }, [props.chatroomID])
 
     //When the page loads, get all messages and configure pusher for the first time. 
+    
+    /*
+     useEffect(()=> {
+        //getMessages();
+        //handlePusher();
+     }, []);
+     */
+
      useEffect(()=> {
         getMessages();
-        handlePusher();
-     }, []);
+        //handlePusher();
+    }, [roomContext.currentRoomID]);
 
     return (
         <ContainerFluid>
-            <Chat messages={messages} handlePusher={handlePusher} chatroomID={props.chatroomID} chatroomName={props.chatroomName}/>
+            <Chat messages={messages} handlePusher={handlePusher} getMessages={getMessages} chatroomName={props.chatroomName}/>
         </ContainerFluid>
     );
 }

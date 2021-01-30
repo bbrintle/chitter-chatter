@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { useContext } from 'react';
 import { ListGroup } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import "./SideBarChatrooms.css"
+import "./SideBarChatrooms.css";
+import { RoomContext } from "../../Context/RoomContext";
 
 function SideBarChatrooms({ chatrooms }) {
+    const roomContext = useContext(RoomContext);
+
+    const handleRoomChange = (id) => {
+        roomContext.setCurrentRoomID(id);
+    }
+
     return (
         <div>
             <ListGroup>
@@ -13,7 +21,7 @@ function SideBarChatrooms({ chatrooms }) {
                     
                     {chatrooms.map((chatroom, index) => {
                         return (
-                            <Link to={`/dashboard/${chatroom.chatroomName}/${chatroom._id}`} target="_parent">
+                            <Link onClick={() => handleRoomChange(chatroom._id)} to={`/dashboard/${chatroom.chatroomName}/${chatroom._id}`}>
                                 <div>
                                     <ListGroup.Item 
                                         key={index} 
