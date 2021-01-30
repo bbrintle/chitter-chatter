@@ -20,6 +20,11 @@ function Chat(props) {
     //  const {chatroomName} = props
     // const lastSeen = messages[messages.length - 1].timeStamp;
 // I am thinking that this should be in the Chatbox component, so we can set the message state and force a render of the chat box.
+    const scrollBot = () => {
+        let chatBody = document.getElementById("chat_body");
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
     const sendMessage = async (event) => {
         event.preventDefault();
         const currentTime = new Date().toUTCString();
@@ -31,7 +36,7 @@ function Chat(props) {
             senderID: authContext.user._id,
             chatroomID:chatroomID //chatroom id comes from use Params now, not props
         }).then(() =>  props.handlePusher()); // call the function after axios returns its promise
-    
+        scrollBot();
         //Once axios has completed, set the input back to blank
         setInput("");
     }
