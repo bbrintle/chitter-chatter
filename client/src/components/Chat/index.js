@@ -2,10 +2,12 @@ import { Avatar } from '@material-ui/core'
 import { InsertEmoticon, Mic } from '@material-ui/icons'
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "../../Context/AuthContext";
+import { RoomContext } from "../../Context/RoomContext";
 import axios from "axios";
 import './Chat.css';
 // Messages is provided as a props, so we need to retrieve it via props and then destructure messages out of props
 function Chat(props) {
+    const roomContext = useContext(RoomContext);
     const { messages, chatroomName } = props;
     const [input, setInput] = useState("");
     const authContext = useContext(AuthContext);
@@ -21,10 +23,11 @@ function Chat(props) {
             name: authContext.user.username,
             timeStamp: currentTime,
             senderID: authContext.user._id,
-            chatroomID: props.chatroomID
+            chatroomID: roomContext.currentRoomID
         });
         //Now, run parent function to get the messages again and render messages again.
         props.handlePusher();
+        //props.getMessages();
         //Once axios has completed, set the input back to blank
         setInput("");
     }
