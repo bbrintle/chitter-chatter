@@ -6,6 +6,7 @@ import { RoomContext } from "../../Context/RoomContext";
 
 //Include the Message Service.
 import axios from "axios"
+import { useParams } from "react-router-dom"
 
 const ChatBox = (props) => {
 
@@ -14,7 +15,7 @@ const ChatBox = (props) => {
   //Hold all messages in state.
   const [messages, setMessages] = useState([]);
   //const [roomID, setRoomID] = useState("");
-  
+
   const scrollBot = () => {
       let chatBody = document.getElementById("chat_body");
       chatBody.scrollTop = chatBody.scrollHeight;
@@ -26,7 +27,6 @@ const ChatBox = (props) => {
             .then(result => {
                 setMessages(result.data);     
             });
-
       scrollBot();
     };
 
@@ -38,7 +38,7 @@ const ChatBox = (props) => {
   
       const channel = pusher.subscribe('messages');
       channel.bind('inserted', (newMessages) => {
-        getMessages();
+        getMessages();      
       });
       //Unbind and Unsubscribe to prevent multiple connections to pusher and insure that there is only one subscriber at a time
       return () => {
@@ -46,14 +46,6 @@ const ChatBox = (props) => {
         channel.unsubscribe();
       };
     }
-
-    // useEffect(() => {
-    //   if(roomID !== props.chatroomID){
-    //     setRoomID(props.chatroomID)
-    //     getMessages();
-    //   }
-
-    // }, [props.chatroomID])
 
     //When the page loads, get all messages and configure pusher for the first time. 
     
