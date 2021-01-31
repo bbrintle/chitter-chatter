@@ -9,6 +9,7 @@ import Sidebar from "../components/Sidebar";
 import ChatBox from "../components/ChatBox";
 import "./style.css";
 import Profile from "../components/Profile/Profile"
+import SpotlightBanner from "../components/SpotlightBanner";
 import { useParams } from "react-router-dom"
 
 
@@ -25,6 +26,7 @@ const Dashboard = () => {
                     </Col>
 
                     <Col size={"col-sm-8 col-md-9 col-lg-10"}>
+                        <SpotlightBanner/>
                         {chatroomID ? <ChatBox  /> :
                         <Profile /> } 
                     </Col>
