@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Theme
-import {ThemeProvider} from 'styled-components';
+import styled, {ThemeProvider} from 'styled-components';
 import LightTheme from './themes/light';
 import DarkTheme from './themes/dark';
 import React, {useState} from 'react';
@@ -21,6 +21,11 @@ import StickyFooter from "./components/StickyFooter";
 import PublicRoute from "./hocs/PublicRoute";
 import PrivateRoute from "./hocs/PrivateRoute";
 
+const HeaderWrapper = styled.nav`
+    background-color: ${p => p.theme.bodyBackgroundColor};
+    color: ${p => p.theme.bodyFontColor};
+`;
+
 function App() {
   const [theme, setTheme] = useState(LightTheme);
 
@@ -28,6 +33,7 @@ return (
   <ThemeProvider theme={{...theme, setTheme: () => {
     setTheme(s => s.id === 'light' ? DarkTheme : LightTheme);
   }}}>
+    <HeaderWrapper>
     <Router>
       <Route exact path="/" component={Home}/>
       <PrivateRoute exact path="/dashboard/:chatroomName/:chatroomID" component={Dashboard}/>
@@ -36,6 +42,7 @@ return (
       <PublicRoute exact path="/register" component={Register}/>
       <StickyFooter />
     </Router>
+    </HeaderWrapper>
     </ThemeProvider>
   );
 }

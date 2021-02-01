@@ -3,9 +3,16 @@ import ContainerFluid from "../ContainerFluid";
 import Chat from "../Chat";
 import Pusher from "pusher-js";
 
+import styled from 'styled-components';
+
 //Include the Message Service.
 import axios from "axios";
 import { useParams } from "react-router-dom";
+
+const HeaderWrapper = styled.nav`
+    background-color: ${p => p.theme.bodyBackgroundColor};
+    color: ${p => p.theme.bodyFontColor};
+`;
 
 const ChatBox = (props) => {
   // Get chat room id from params
@@ -53,6 +60,7 @@ const ChatBox = (props) => {
   }
   // Chatroom id was removed as we can get it from useParams
   return (
+    <HeaderWrapper>
     <ContainerFluid>
       <Chat
         messages={messages}
@@ -61,6 +69,7 @@ const ChatBox = (props) => {
         // chatroomName={chatroomName}  no longer needed as the useParams will do this in the chat component
       />
     </ContainerFluid>
+    </HeaderWrapper>
   );
 };
 

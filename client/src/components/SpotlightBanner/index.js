@@ -8,6 +8,13 @@ import BannerMainHeadingType from "./BannerMain/BannerMainHeadingType";
 import BannerMainListType from "./BannerMain/BannerMainListType";
 import BannerMainSideListType from "./BannerMain/BannerMainSide/BannerMainSideListType";
 
+import styled from 'styled-components';
+
+const SpotlightBannerWrapper = styled.header`
+    background-color: white;
+    color: black;
+`;
+
 const SpotlightBanner = () => {
     return (
         <div className="banner mb-3">
@@ -15,6 +22,7 @@ const SpotlightBanner = () => {
                 <Row>
                     <Col size="col-md-7">
                         <div className="banner-main-container">
+                        <SpotlightBannerWrapper>
                             <BannerMainHeadingType 
                                 headingTitle={`Leader's Message`}
                                 headingText={`Four days until launch day. You can do it! P.S. Starbucks in the lounge!`}   
@@ -28,11 +36,13 @@ const SpotlightBanner = () => {
                                     ]
                                 }
                             />
+                        </SpotlightBannerWrapper>
                         </div>
                     </Col>
 
                     <Col size="col-md-5">
                         <div className="banner-main-side-container">
+                            <SpotlightBannerWrapper>
                                 <BannerMainSideListType
                                     headingTitle={`SHOUT-OUTS`}
                                     headingItems={
@@ -43,6 +53,7 @@ const SpotlightBanner = () => {
                                         ]
                                     }
                                 />
+                            </SpotlightBannerWrapper>
                         </div>
                     </Col>
                 </Row>
