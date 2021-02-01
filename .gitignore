@@ -11,3 +11,4 @@
 
 ./client/.eslintcache
 .eslintcache
+.DS_Store

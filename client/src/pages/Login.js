@@ -12,7 +12,7 @@ import styled from 'styled-components';
 
 const SignInTheme = styled.nav`
     color: ${p => p.theme.bodyFontColor};
-    background: ${p => p.theme.bodyBackgroundColor};
+    /* background: ${p => p.theme.bodyBackgroundColor}; */
 `
 
 const Login = (props) => {
@@ -76,7 +76,6 @@ const Login = (props) => {
 
     return (
         <>
-        <SignInTheme>
         <Header/>
         <Container>
             <form className="mt-5" onSubmit={handleSubmit}>
@@ -99,7 +98,6 @@ const Login = (props) => {
             </form>
             {message ? <Message message={message}/> : null}
         </Container>
-        </SignInTheme>
         </>
     );
 };

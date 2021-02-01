@@ -7,6 +7,14 @@ import Container from "../components/Container";
 import Message from "../components/Message";
 import Header from "../components/Header";
 
+// Theme
+import styled from 'styled-components';
+
+const RegisterTheme = styled.nav`
+    color: ${p => p.theme.bodyFontColor};
+    /* background: ${p => p.theme.bodyBackgroundColor}; */
+`
+
 const Register = (props) => {
     //Initialize user state.
     const [user, setUser] = useState({email: "", username: "", password: "", contacts: [], chatrooms: []});
@@ -61,7 +69,9 @@ const Register = (props) => {
         <Container>
             <form className="mt-5" onSubmit={handleSubmit}>
                 <h1 className="text-center my-4 display-1 main-display">
+                    <RegisterTheme>
                     S<span className="slightly-smaller">IGN</span> U<span className="slightly-smaller">P</span>
+                    </RegisterTheme>
                 </h1>
                 <hr className="mt-3 mb-5"/>
                 <div className="form-group my-4">

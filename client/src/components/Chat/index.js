@@ -5,6 +5,20 @@ import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
 import './Chat.css';
 import { useParams } from 'react-router';
+
+// Theme
+import styled, {ThemeContext} from 'styled-components';
+
+const ChatWrapper = styled.header`
+    background-color: ${p => p.theme.secondaryColor};
+    color: ${p => p.theme.secondaryBodyFontColor};
+    flex: 1;
+    overflow: scroll;
+    padding: 30px;
+    max-height: 600px;
+    border: 1px solid white;
+`;
+
 // Messages is provided as a props, so we need to retrieve it via props and then destructure messages out of props
 function Chat(props) {
     const { messages } = props;
@@ -51,7 +65,8 @@ function Chat(props) {
                 </div>
             </div>
 
-            <div className='chat_body' id='chat_body'>
+            <ChatWrapper>
+            <div id='chat_body'>
                 {/* Here we loop through messages and create a new chat bubble for each message. if the .recieved is true,
                  the bubble will be given the className 'chat_reciever' for different styling*/}
                 {messages.map((message, index) => (
@@ -67,6 +82,7 @@ function Chat(props) {
                 ))
                 }
             </div>
+            </ChatWrapper>
 
             <div className="chat_footer">
                 <InsertEmoticon />
