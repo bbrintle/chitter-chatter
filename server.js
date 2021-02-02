@@ -182,25 +182,20 @@ app.get("/api/users/searchbyusername/:username", function(req, res) {
 
 });
 
-app.post("/api/contact/add", async function(req, res) {
-  const _id = req.body.currentUser._id;
-  const userContacts = req.body.currentUser.contacts
-  await User.findByIdAndUpdate(_id,{ 
-    contacts: [...userContacts, 
-      {
-      userID: req.body.userID,
-      username: req.body.username,
-      userEmail: req.body.userEmail
-      } 
-    ]
-  }, function (err, docs) {
-    if(err){
-      console.log(err)
-    } else{
-      console.log("Updated User: ", docs)
-    }
+app.post("/api/contact/add", function(req, res) {
+  User.updateOne(
+    {_id: req.body.currentUser._id},
+    { $push:{
+        contacts: {
+          userID: req.body.userID,
+          username: req.body.username,
+          userEmail: req.body.userEmail
+        } 
+      }
+  }).then(function(dbContacts) {
+    res.json(dbContacts);
   });
-});
+})
 
 
 
