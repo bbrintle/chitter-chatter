@@ -7,6 +7,14 @@ import Container from "../components/Container";
 import Message from "../components/Message";
 import Header from "../components/Header";
 
+// Theme
+import styled from 'styled-components';
+
+const SignInTheme = styled.nav`
+    color: ${p => p.theme.bodyFontColor};
+    /* background: ${p => p.theme.bodyBackgroundColor}; */
+`
+
 const Login = (props) => {
     //Initialize user state.
     const [user, setUser] = useState({email: "", username: "", password: ""});
@@ -72,7 +80,9 @@ const Login = (props) => {
         <Container>
             <form className="mt-5" onSubmit={handleSubmit}>
                 <h1 className="text-center my-4 display-1 main-display">
+                <SignInTheme>
                     S<span className="slightly-smaller">IGN</span> I<span className="slightly-smaller">N</span>
+                </SignInTheme>
                 </h1>
                 <hr className="mt-3 mb-5"/>
                 <div className="form-group my-4">

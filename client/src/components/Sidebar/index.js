@@ -21,7 +21,7 @@ import './Sidebar.css';
 // Theme
 import styled from 'styled-components';
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.nav`
     padding: 4px 8px;
     display: block;
     text-align: center;

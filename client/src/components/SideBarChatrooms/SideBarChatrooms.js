@@ -1,19 +1,29 @@
-import React from 'react'
+import React from 'react';
+import { useContext } from 'react';
 import { ListGroup } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import "./SideBarChatrooms.css"
+import "./SideBarChatrooms.css";
+
+import styled from 'styled-components';
+
+const ChitChatWrapper = styled.header`
+    background-color: white;
+    color: black;
+`;
 
 function SideBarChatrooms({ chatrooms }) {
     return (
         <div>
             <ListGroup>
+                <ChitChatWrapper>
                     <div id="chat-heading-wrapper" className="text-center yellow pt-3 pb-2">
                         <h5 className="chat-heading">CHIT CHATS</h5>
                     </div>
+                </ChitChatWrapper>
                     
                     {chatrooms.map((chatroom, index) => {
                         return (
-                            <Link to={`/dashboard/${chatroom.chatroomName}/${chatroom._id}`} target="_parent">
+                            <Link to={`/dashboard/${chatroom.chatroomName}/${chatroom._id}`}>
                                 <div>
                                     <ListGroup.Item 
                                         key={index} 

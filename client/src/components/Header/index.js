@@ -42,7 +42,7 @@ const Header = (props) => {
     };
 
     return (
-        <Navbar className="navbar-light bg-light" expand="sm">
+        <Navbar expand="sm">
             <NavbarBrand/>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
