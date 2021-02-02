@@ -3,15 +3,14 @@ import React, { useState } from 'react'
 import "./FoundContacts.css"
 
 function FoundContacts({ users, currentUser }) {
-    const [onOff, setOnOff] = useState(false);
+    const [onOff, setOnOff] = useState("");
 
     const addContact = async () => {
-
+        setOnOff("false")
+        
         await currentUser.contacts.forEach(contact => {
-            if(users._id !== null){
-               if((users._id === contact.userID)) {
-                    setOnOff(true);
-                }
+            if((users._id === contact.userID)) {
+                setOnOff("true");
             }
         });
 
@@ -22,7 +21,7 @@ function FoundContacts({ users, currentUser }) {
                 userEmail: users.email,
                 currentUser: currentUser
             })
-            setOnOff(false)
+            setOnOff("")
         } else {
             console.log("Already have this contact in contacts!")
         }
