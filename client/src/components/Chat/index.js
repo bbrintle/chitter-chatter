@@ -9,6 +9,10 @@ import { useParams } from 'react-router';
 // Theme
 import styled, {ThemeContext} from 'styled-components';
 
+// Emojis
+import 'emoji-mart/css/emoji-mart.css';
+import { Emoji } from 'emoji-mart';
+
 const ChatWrapper = styled.header`
     background-color: ${p => p.theme.secondaryColor};
     color: ${p => p.theme.secondaryBodyFontColor};
@@ -101,6 +105,19 @@ function Chat(props) {
                 </form>
                 <Mic />
             </div>
+
+            <br></br>
+
+            <div>
+                <Emoji emoji={{ id: 'office' }} size={35} />{" "}
+                <Emoji emoji={{ id: 'briefcase' }} size={35} />{" "}
+                <Emoji emoji={{ id: 'clock3' }} size={35} />{" "}
+                <Emoji emoji={{ id: 'card_index_dividers' }} size={35} />{" "}
+                <Emoji emoji={{ id: 'bar_chart' }} size={35} />{" "}
+                <Emoji emoji={{ id: 'card_index' }} size={35} />{" "}
+                <Emoji emoji={{ id: 'desktop_computer' }} size={35} />
+            </div>
+
         </div>
     )
 }
