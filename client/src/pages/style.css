@@ -2,6 +2,17 @@ body, .MuiTypography-body1 {
     font-family: 'Quicksand', sans-serif !important;
 }
 
+.full-page {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.center-text {
+    display: flex;
+    justify-content: center;
+}
+
 #main-logo {
     width: 100%;
 }
