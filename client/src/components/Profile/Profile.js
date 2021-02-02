@@ -5,16 +5,27 @@ import FoundContacts from "../FoundContacts/FoundContacts"
 import { AuthContext } from "../../Context/AuthContext";
 
 function Profile() {
-    const [input, setInput] = useState("");
+    const [emailInput, setEmailInput] = useState("");
+    const [usernameInput, setUsernameInput] = useState("");
     const [users, setUsers] = useState([])
     const [show, setShow] = useState(false);
     const { user } = useContext(AuthContext);
 
     const handleShow = () => setShow(true);
 
-    const searchForContact = (e) => {
+    const searchForContactByEmail = (e) => {
         e.preventDefault();
-        axios.get(`/api/users/${input}`)
+        axios.get(`/api/users/searchbyemail/${emailInput}`)
+            .then(result => {
+                console.log(result)
+                setUsers(result.data);     
+            });
+        handleShow()
+    }
+
+    const searchForContactByUsername = (e) => {
+        e.preventDefault();
+        axios.get(`/api/users/searchbyusername/${usernameInput}`)
             .then(result => {
                 console.log(result)
                 setUsers(result.data);     
@@ -23,19 +34,33 @@ function Profile() {
     }
 
     return (
-        <div>
-            <form>
-                <label>Search by Email</label>
-                <input 
-                    value={input} 
-                    onChange={e => setInput(e.target.value)} type="text" 
-                />
-                <button onClick={searchForContact} >Search</button>
-            </form>
+        <>
+            <div>
+                <form>
+                    <label>Search by Email</label>
+                    <input 
+                        value={emailInput} 
+                        onChange={e => setEmailInput(e.target.value)} type="text" 
+                    />
+                    <button onClick={searchForContactByEmail} >Search</button>
+                </form>
+                
+            </div>
+
+            <div>
+                <form>
+                    <label>Search by Username</label>
+                    <input 
+                        value={usernameInput} 
+                        onChange={e => setUsernameInput(e.target.value)} type="text" 
+                    />
+                    <button onClick={searchForContactByUsername} >Search</button>
+                </form>
+
+            </div>
 
             <FoundContacts users={users} show={show} currentUser={user}/>
-            
-        </div>
+        </>
     )
 }
 

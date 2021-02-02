@@ -75,7 +75,7 @@ db.once('open', ()=>{
                   message: messageDetails.message,
                   timeStamp: messageDetails.timeStamp,
                   senderID: messageDetails.senderID,
-                  // chatroomID: messageDetails.chatroomID,
+                  chatroomID: messageDetails.chatroomID,
                   // chatroomName: messageDetails.chatroomName,
               }
           );
@@ -105,7 +105,6 @@ app.post("/api/messages", function(req, res) {
 app.get("/api/messages/:chatroomID", function(req, res) {
   Message.find({ chatroomID: req.params.chatroomID })
   .then(function(dbMessage) {
-    console.log(dbMessage)
     res.json(dbMessage);
   });
 });
@@ -150,9 +149,26 @@ app.get("/api/chatrooms/:id", function(req, res) {
 
 
 //User APIs
-app.get("/api/users/:email", function(req, res) {
+app.get("/api/users/searchbyemail/:email", function(req, res) {
   const email = req.params.email
   User.findOne({email}, (error, user) => {
+    //Return if there was a database error.
+    if(error) {
+        return done(error);
+    }
+    //Return if no matching user exists.
+    if(!user) {
+        return done(null, false);
+    }
+    res.json(user);
+  });
+
+});
+
+//User APIs
+app.get("/api/users/searchbyusername/:username", function(req, res) {
+  const username = req.params.username
+  User.findOne({username}, (error, user) => {
     //Return if there was a database error.
     if(error) {
         return done(error);
@@ -193,9 +209,9 @@ const authRouter = require("./routes/auth");
 app.use("/auth", authRouter);
 
 // If API routes are not used, use the React app - tells Heroku
-app.use(function(request, response) {
-  response.sendFile(path.join(__dirname, "/client/build/index.html"));
-});
+// app.use(function(request, response) {
+//   response.sendFile(path.join(__dirname, "/client/build/index.html"));
+// });
 
 // Start the API server
 app.listen(PORT, function() {
