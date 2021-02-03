@@ -42,6 +42,10 @@ body, .MuiTypography-body1 {
     font-size: 80%;
 }
 
+.larger-text {
+    font-size: 150%;
+}
+
 .squeezed {
     transform: scale(1, 0.95);
 }
@@ -292,6 +296,102 @@ body, .MuiTypography-body1 {
 .landing-quote {
     font-weight: 100;
     letter-spacing: 0.1rem;
+}
+
+/*Dashboard*/
+
+.btn-green {
+    color: #fff;
+    background-color: #4cd137;
+    border-color: #4cd137;
+}
+
+.btn-green:hover, .btn-green:active, .btn-green:focus {
+    color: #4cd137;
+    border-color: #4cd137;
+    background-color: #fff;;
+}
+
+.btn-red {
+    color: #fff;
+    background-color: rgba(220,120,200,1.0);
+    border-color: rgba(220,120,200,1.0);
+}
+
+.btn-red:hover, .btn-red:active, .btn-red:focus {
+    color: rgba(220,120,200,1.0);
+    border-color: rgba(220,120,200,1.0);
+    background-color: #fff;
+}
+
+.green-border {
+    border: 1px solid #4cd137;
+    font-size: 25px;
+}
+
+.green-border:active, .green-border:focus {
+    outline: none !important;
+}
+
+.green-border:active, .green-border:focus {
+    outline: none !important;
+    border: 1px solid #4cd137 !important;
+    box-shadow: 0 0 3px #4cd137 !important;
+    -moz-box-shadow: 0 0 3px #4cd137 !important;
+    -webkit-box-shadow: 0 0 3px #4cd137 !important;
+}
+
+.green-border::-webkit-input-placeholder {
+    font-size: 100%;
+}
+
+.green-border:-moz-placeholder { /* Firefox 18- */
+    font-size: 100%;
+}
+
+.green-border::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 100%;
+}
+
+.green-border:-ms-input-placeholder {
+    font-size: 100%;
+}
+
+.red-border {
+    border: 1px solid rgba(220,120,200,1.0);
+    font-size: 25px;
+}
+
+.red-border:active, .red-border:focus {
+    outline: none !important;
+}
+
+.red-border:active, .red-border:focus {
+    outline: none !important;
+    border: 1px solid rgba(220,120,200,1.0) !important;
+    box-shadow: 0 0 3px rgba(220,120,200,1.0) !important;
+    -moz-box-shadow: 0 0 3px rgba(220,120,200,1.0) !important;
+    -webkit-box-shadow: 0 0 3px rgba(220,120,200,1.0) !important;
+}
+
+.red-border::-webkit-input-placeholder {
+    font-size: 100%;
+}
+
+.red-border:-moz-placeholder { /* Firefox 18- */
+    font-size: 100%;
+}
+
+.red-border::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 100%;
+}
+
+.red-border:-ms-input-placeholder {
+    font-size: 100%;
+}
+
+.find-users-heading {
+    border-bottom: 2px solid rgba(251, 197, 49, 0.7);
 }
 
 /*Media Queries*/
