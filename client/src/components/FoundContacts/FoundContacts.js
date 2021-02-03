@@ -2,6 +2,11 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import "./FoundContacts.css"
 
+//Grid Components
+import Container from "../ContainerFluid";
+import Row from "../Row";
+import Col from "../Col";
+
 function FoundContacts({ users, currentUser }) {
     // const [onOff, setOnOff] = useState("");
     let offOn = false;
@@ -41,12 +46,36 @@ function FoundContacts({ users, currentUser }) {
     }
 
     return (
-        <div className='foundUserCard'>
-            <p>{users.username}</p>
-            <p>{users.email}</p>
-            <p>{users._id}</p>
-            <button onClick={() => addContact()}>Add User</button>
-        </div>
+        <>
+            {users.username && users.email ? 
+                <div className="mt-4 px-auto larger-text foundUserCard">
+                    <div className="ml-5 mr-5">
+                        <Container>
+                            <Row>
+                                <Col size="col-md-9">
+                                    <Row>
+                                        <Col>
+                                            <i className="fas fa-user"></i>
+                                            <strong> {users.username} </strong>
+                                        </Col>
+                                        <Col>
+                                            <i>({users.email})</i>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                                <Col size="col-md-3">
+                                    <button className="btn blue-button btn-block fas fa-plus" aria-label="Add User" onClick={() => addContact()}>
+                                    </button>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </div>
+                </div> 
+                : 
+                <div>
+                </div>
+            }
+        </>
     )
 }
 
