@@ -54,17 +54,21 @@ const Sidebar = () => {
         const newChatroom = {
             users:[
                 {
-                    userID: "600b59fdf4efac552861fa25",
+                    userID: "6010af55b0702341a4819709",
                     username: "bbrintle"
                 },
                 {
-                    userID: "6003678b7413fe4934370d53",
+                    userID: "601b7b154274ec46446c1611",
                     username: "areye022"
                 }],
             chatroomName: input
         }
 
-        await axios.post('/api/chatrooms', newChatroom);
+        await axios.post('/api/chatrooms', newChatroom).then(message => {
+            console.log(message);
+        });
+        //Retrieve chatrooms again.
+        getChatrooms();
         handlePusherChatroom();
         handleClose();
     }

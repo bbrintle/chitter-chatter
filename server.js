@@ -122,9 +122,41 @@ app.get("/api/chatrooms/all", function(req, res) {
 
 // POST route for saving a new message
 app.post("/api/chatrooms", function(req, res) {
-  Chatroom.create(req.body)
-  .then(function(dbChatroom) {
-      res.json(dbChatroom);
+  /*Receive a set of user IDs/username which 
+  will be used to populate their chatroom array
+  */
+  console.log(req.body.users);
+  //const newChatroom = Chatroom.create(req.body)
+  //Chatroom.save(newChatroom).then
+  
+  const newChatroom = new Chatroom(req.body);
+  //Chatroom.create(req.body)
+  newChatroom.save(error => {
+    if(error) {
+      console.log(error);
+    } else {
+      /*find the users associated with this chatroom,
+      and add this ID to their chatroom array. */
+      
+      req.body.users.forEach(user => {
+        console.log('this user: ' + user.userID);
+        User.updateOne({
+          _id: user.userID
+        }, {
+          $push: {
+            chatrooms: {
+              chatroomID: newChatroom._id,
+              chatroomName: newChatroom.chatroomName
+            }
+          }
+        })
+        .then(function(chatroom) {
+          console.log(chatroom);
+        });
+      });
+
+      res.json({message: "Success"});
+    }
   });
 });
 
