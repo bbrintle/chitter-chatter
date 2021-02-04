@@ -3,7 +3,7 @@
     margin-top: 30px;
     flex-direction: column;
     border-radius: 15px;
-    background-color: pink;
+    background-color: rgb(238, 203, 208);
     box-shadow: 0px, 5px, 7px -7px rgba(0,0,0,0.75);
     width: 100%;
 }
