@@ -3,7 +3,7 @@ import axios from "axios"
 import Pusher from "pusher-js"
 
 // For buttons
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from "react";
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -16,6 +16,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import Modal from "react-bootstrap/Modal"
 import SideBarChatrooms from "../SideBarChatrooms/SideBarChatrooms";
 import { Link } from 'react-router-dom';
+import { AuthContext } from "../../Context/AuthContext";
 import './Sidebar.css';
 
 // Theme
@@ -42,6 +43,8 @@ const Sidebar = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const authContext = useContext(AuthContext);
+    let userContacts = authContext.user
 
     const openModal = () => {
         handleShow();
@@ -176,6 +179,18 @@ const Sidebar = () => {
                     <Modal.Body>
                         
                         <form>
+                            <p>
+                                Select who you want to create a chatroom with?
+                            </p>
+                            <div className='contact-list'>
+                              {userContacts.contacts.map((contact, index) => (
+                                <div>
+                                    <input key={index} type="checkbox" id="" name={contact.username} value={contact.username} />
+                                    <label key={index} for={contact.username}> {contact.username}</label>
+                                </div>
+                            ))}  
+                            </div>
+                            
                             <label>Please provide a name for the chatroom:</label>
                             <input 
                                 value={input} 
