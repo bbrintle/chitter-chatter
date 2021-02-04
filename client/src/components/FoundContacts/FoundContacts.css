@@ -1,4 +1,6 @@
 .foundUserCard {
     margin-top: 20px;
-    border: 1px solid black;
+    background-color: rgba(251, 197, 49, 0.15);
+    padding-top: 30px;
+    padding-bottom: 30px;
 }

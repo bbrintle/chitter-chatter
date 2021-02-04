@@ -9,11 +9,11 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 function Copyright() {
     return (
-        <Typography variant="body2" color="textSecondary">
-            {'Copyright © '}
+        <Typography className="center-text" variant="body2" color="textSecondary">
+            {'Copyright © | '}
             <Link color="inherit" href="#">
                 Chitter Chatter
-            </Link>{' '}
+            </Link>{'  | '}
             {new Date().getFullYear()}
             {'.'}
         </Typography>
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
     },
     main: {
-        marginTop: theme.spacing(1),
+        marginTop: theme.spacing(6),
         marginBottom: theme.spacing(1),
     },
     footer: {

@@ -75,7 +75,7 @@ db.once('open', ()=>{
                   message: messageDetails.message,
                   timeStamp: messageDetails.timeStamp,
                   senderID: messageDetails.senderID,
-                  // chatroomID: messageDetails.chatroomID,
+                  chatroomID: messageDetails.chatroomID,
                   // chatroomName: messageDetails.chatroomName,
               }
           );
@@ -105,7 +105,6 @@ app.post("/api/messages", function(req, res) {
 app.get("/api/messages/:chatroomID", function(req, res) {
   Message.find({ chatroomID: req.params.chatroomID })
   .then(function(dbMessage) {
-    console.log(dbMessage)
     res.json(dbMessage);
   });
 });
@@ -150,7 +149,7 @@ app.get("/api/chatrooms/:id", function(req, res) {
 
 
 //User APIs
-app.get("/api/users/:email", function(req, res) {
+app.get("/api/users/searchbyemail/:email", function(req, res) {
   const email = req.params.email
   User.findOne({email}, (error, user) => {
     //Return if there was a database error.
@@ -166,25 +165,37 @@ app.get("/api/users/:email", function(req, res) {
 
 });
 
-app.post("/api/contact/add", async function(req, res) {
-  const _id = req.body.currentUser._id;
-  const userContacts = req.body.currentUser.contacts
-  await User.findByIdAndUpdate(_id,{ 
-    contacts: [...userContacts, 
-      {
-      userID: req.body.userID,
-      username: req.body.username,
-      userEmail: req.body.userEmail
-      } 
-    ]
-  }, function (err, docs) {
-    if(err){
-      console.log(err)
-    } else{
-      console.log("Updated User: ", docs)
+//User APIs
+app.get("/api/users/searchbyusername/:username", function(req, res) {
+  const username = req.params.username
+  User.findOne({username}, (error, user) => {
+    //Return if there was a database error.
+    if(error) {
+        return done(error);
     }
+    //Return if no matching user exists.
+    if(!user) {
+        return done(null, false);
+    }
+    res.json(user);
   });
+
 });
+
+app.post("/api/contact/add", function(req, res) {
+  User.updateOne(
+    {_id: req.body.currentUser._id},
+    { $push:{
+        contacts: {
+          userID: req.body.userID,
+          username: req.body.username,
+          userEmail: req.body.userEmail
+        } 
+      }
+  }).then(function(dbContacts) {
+    res.json(dbContacts);
+  });
+})
 
 
 
@@ -193,9 +204,9 @@ const authRouter = require("./routes/auth");
 app.use("/auth", authRouter);
 
 // If API routes are not used, use the React app - tells Heroku
-app.use(function(request, response) {
-  response.sendFile(path.join(__dirname, "/client/build/index.html"));
-});
+// app.use(function(request, response) {
+//   response.sendFile(path.join(__dirname, "/client/build/index.html"));
+// });
 
 // Start the API server
 app.listen(PORT, function() {

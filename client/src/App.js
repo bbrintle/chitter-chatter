@@ -34,14 +34,14 @@ return (
     setTheme(s => s.id === 'light' ? DarkTheme : LightTheme);
   }}}>
     <HeaderWrapper>
-    <Router>
-      <Route exact path="/" component={Home}/>
-      <PrivateRoute exact path="/dashboard/:chatroomName/:chatroomID" component={Dashboard}/>
-      <PrivateRoute exact path="/dashboard" component={Dashboard}/>
-      <PublicRoute exact path="/login" component={Login}/>
-      <PublicRoute exact path="/register" component={Register}/>
-      <StickyFooter />
-    </Router>
+        <Router>
+          <Route exact path="/" component={Home}/>
+          <PrivateRoute exact path="/dashboard/:chatroomName/:chatroomID" component={Dashboard}/>
+          <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+          <PublicRoute exact path="/login" component={Login}/>
+          <PublicRoute exact path="/register" component={Register}/>
+          <StickyFooter />
+        </Router>
     </HeaderWrapper>
     </ThemeProvider>
   );

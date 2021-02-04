@@ -18,7 +18,7 @@ const Dashboard = () => {
     const { chatroomID} = useParams();
 
     return (
-        <>
+        <div className='body'>
             <Header/>
             <ContainerFluid>
                 <Row>
@@ -34,7 +34,7 @@ const Dashboard = () => {
                     </Col>
                 </Row>
             </ContainerFluid>
-        </>
+        </div>
     );
 };
 
