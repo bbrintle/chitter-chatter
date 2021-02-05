@@ -19,10 +19,11 @@ const pusher = new Pusher({
   useTLS: true
 });
 
-//Include user model
+//Include models
 const User = require("./models/user");
 const Message = require("./models/message");
 const Chatroom = require("./models/chatroom");
+const Post = require("./models/post");
 
 //Set up Cookie Parser.
 const cookieParser = require("cookie-parser");
@@ -59,8 +60,10 @@ db.once('open', ()=>{
 
   // messagecontent refers to the collection in mongoDB (from dbMessage.js)
   const msgCollection = db.collection('messages')
+  const recCollection= db.collection('posts')
   // changeStream is a method that allows us to watch mongoDB
   const changeStream = msgCollection.watch()
+  const recChangeStream = recCollection.watch()
   
   // Using the .watch() from changeStream, we check to see if the DB has had any changes, and then save that change to the variable "change"
   changeStream.on('change', (change) => {
@@ -80,8 +83,26 @@ db.once('open', ()=>{
               }
           );
       } else {
-          console.log("Error triggering Pusher")
+          console.log("Error triggering Messaging Pusher")
       }
+  });
+  recChangeStream.on('change', (change) => {
+    // If the operationType from the change is "insert", pusher will then trigger and send back the Name, Message, Timestap, and Received
+    if(change.operationType === 'insert') {
+        //fullDocument is the area that provides the message _Id, Name, Message, Timestamp, and Reveicved. Save it to the variable "messageDetails"
+        const recognitionDetails = change.fullDocument;
+        // Trigger pusher and use the 'messages' channel and set the Event to 'inserted' to add the messageDetails
+        pusher.trigger('posts', 'inserted',
+            {
+                name: recognitionDetails.name,
+                rePosts: recognitionDetails.message,
+                timeStamp: recognitionDetails.timeStamp,
+                senderID: recognitionDetails.senderID,
+            }
+        );
+    } else {
+        console.log("Error triggering Recognition Pusher")
+    }
   })
 })
 
@@ -229,7 +250,22 @@ app.post("/api/contact/add", function(req, res) {
   });
 })
 
+//Recognition Posts APIs
+// GET route for getting all recognition
+app.get("/api/recognitions/all", function(req, res) {
+  Post.find(req.body)
+  .then(function(dbRecognition) {
+    res.json(dbRecognition);
+  });
+});
 
+// POST route for saving a new recognition
+app.post("/api/recognitions", function(req, res) {
+  Post.create(req.body)
+    .then(function(dbRecognition) {
+      res.json(dbRecognition);
+    });
+});
 
 // goes to route folder (comment for now, will use later)
 const authRouter = require("./routes/auth");
