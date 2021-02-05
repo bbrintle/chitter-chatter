@@ -68,11 +68,22 @@ const Sidebar = () => {
     return checkboxesChecked.length > 0 ? checkboxesChecked : null;
     }
 
+    const getDefaultChatroomName = (inputs) => {
+        let defaultName = "";
+        inputs.forEach((input, index) => {
+            defaultName +=
+            input.attributes.usersName.value +
+            (index === inputs.length - 1 ? '' : ', ');
+        });
+        return defaultName;
+    }
+
     const createChatroom = async () => {
+        //See which names are checked. These users' information will be used to add them to the chatroom.
         const checkedBoxes = getCheckedBoxes();
         const newChatroom = {
             users:[],
-            chatroomName: input
+            chatroomName: input || getDefaultChatroomName(checkedBoxes)
         }
         checkedBoxes.forEach(input => {
             newChatroom.users.push({
@@ -82,18 +93,6 @@ const Sidebar = () => {
         })
         console.log(checkedBoxes);
         console.log(newChatroom);
-        // const newChatroom = {
-        //     users:[
-        //         {
-        //             userID: "6010af55b0702341a4819709",
-        //             username: "bbrintle"
-        //         },
-        //         {
-        //             userID: "601b7b154274ec46446c1611",
-        //             username: "areye022"
-        //         }],
-        //     chatroomName: input
-        // }
 
         await axios.post('/api/chatrooms', newChatroom).then(message => {
             console.log(message);
