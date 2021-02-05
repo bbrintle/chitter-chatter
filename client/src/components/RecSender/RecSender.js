@@ -46,7 +46,8 @@ function RecSender(props) {
             </div>
             <div>
             {recognitions.map((recognitions, index) => (
-                    <>
+                    <div className={`recPost ${(index + 1) % 3 === 1 ? 'redbg' : (index + 1) % 3 === 2 ? 'greenbg' : 'bluebg'}`
+            }>
                        <div key = {index} className="post_top">
                         <Avatar 
                         className="post_avatar" />
@@ -58,7 +59,7 @@ function RecSender(props) {
                         <div className="post_bottom">
                             <p>{recognitions.recognitions}</p>
                         </div>
-                    </>
+                    </div>
                 ))
                 }
             </div>
