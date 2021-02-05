@@ -53,19 +53,47 @@ const Sidebar = () => {
     //selectedContacts = each selected contact provided in the modal
     //users.push(selectedContacts)
 
+    // Pass the checkbox name to the function
+    function getCheckedBoxes() {
+        var checkboxes = document.getElementsByName("checkboxContacts");
+        var checkboxesChecked = [];
+    // loop over them all
+    for (var i=0; i < checkboxes.length; i++) {
+       // And stick the checked ones onto an array...
+        if (checkboxes[i].checked) {
+            checkboxesChecked.push(checkboxes[i]);
+        }
+    }
+    // Return the array if it is non-empty, or null
+    return checkboxesChecked.length > 0 ? checkboxesChecked : null;
+    }
+
     const createChatroom = async () => {
+        const checkedBoxes = getCheckedBoxes();
         const newChatroom = {
-            users:[
-                {
-                    userID: "6010af55b0702341a4819709",
-                    username: "bbrintle"
-                },
-                {
-                    userID: "601b7b154274ec46446c1611",
-                    username: "areye022"
-                }],
+            users:[],
             chatroomName: input
         }
+        checkedBoxes.forEach(input => {
+            newChatroom.users.push({
+                userID: input.attributes.usersID.value,
+                username: input.attributes.usersName.value
+            })
+        })
+        console.log(checkedBoxes);
+        console.log(newChatroom);
+        // const newChatroom = {
+        //     users:[
+        //         {
+        //             userID: "6010af55b0702341a4819709",
+        //             username: "bbrintle"
+        //         },
+        //         {
+        //             userID: "601b7b154274ec46446c1611",
+        //             username: "areye022"
+        //         }],
+        //     chatroomName: input
+        // }
 
         await axios.post('/api/chatrooms', newChatroom).then(message => {
             console.log(message);
@@ -185,7 +213,7 @@ const Sidebar = () => {
                             <div className='contact-list'>
                               {userContacts.contacts.map((contact, index) => (
                                 <div>
-                                    <input key={index} type="checkbox" id="" name={contact.username} value={contact.username} />
+                                    <input key={index} type="checkbox" id="" name="checkboxContacts" value={contact.username} usersID={contact.userID} usersName={contact.username} />
                                     <label key={index} for={contact.username}> {contact.username}</label>
                                 </div>
                             ))}  
