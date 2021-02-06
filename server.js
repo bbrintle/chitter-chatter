@@ -284,9 +284,9 @@ const authRouter = require("./routes/auth");
 app.use("/auth", authRouter);
 
 // If API routes are not used, use the React app - tells Heroku
-// app.use(function(request, response) {
-//   response.sendFile(path.join(__dirname, "/client/build/index.html"));
-// });
+app.use(function(request, response) {
+  response.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
 
 // Start the API server
 app.listen(PORT, function() {
