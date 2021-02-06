@@ -44,8 +44,6 @@ const ChatBox = (props) => {
 
     const channel = pusher.subscribe("messages");
     channel.bind("inserted", (newMessages) => {
-      console.log("Test pusher");
-      console.log(chatroomID, "pusher triggered");
     });
     //Unbind and Unsubscribe to prevent multiple connections to pusher and insure that there is only one subscriber at a time
     return () => {

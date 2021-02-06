@@ -30,8 +30,6 @@ function Recognition() {
 
     const channel = pusher.subscribe("posts");
     channel.bind("inserted", (newRecognitions) => {
-      console.log("Test pusher");
-    //   console.log(chatroomID, "pusher triggered");
     });
     //Unbind and Unsubscribe to prevent multiple connections to pusher and insure that there is only one subscriber at a time
     return () => {
