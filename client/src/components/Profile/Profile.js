@@ -8,6 +8,7 @@ import { AuthContext } from "../../Context/AuthContext";
 import ContainerFluid from "../ContainerFluid";
 import Row from "../Row";
 import Col from "../Col";
+import ContactCard from '../ContactCard/ContactCard';
 
 function Profile() {
     const [emailInput, setEmailInput] = useState("");
@@ -38,6 +39,14 @@ function Profile() {
 
     return (
         <>
+            <div className="wrapper-flex">
+
+            {user.contacts.map((contact, index) => (
+                <ContactCard contactID={contact.userID} contactName={contact.username} contactEmail={contact.userEmail} key={index} index={index}/>
+            ))}
+
+            </div>
+
             <ContainerFluid>
                 <h1 className="text-center my-4 main-display find-users-heading">
                     F<span className="slightly-smaller">IND</span> U<span className="slightly-smaller">SERS</span>
@@ -47,9 +56,9 @@ function Profile() {
                         <form>
                             <div className="input-group">
                                 <input 
-                                    type="email"
+                                    type="text"
                                     value={emailInput} 
-                                    onChange={e => setEmailInput(e.target.value)} type="text" 
+                                    onChange={e => setEmailInput(e.target.value)}
                                     placeholder="Search by Email"
                                     className="form-control form-control-lg green-border"
                                     required
@@ -67,7 +76,7 @@ function Profile() {
                                 <input 
                                     type="text"
                                     value={usernameInput} 
-                                    onChange={e => setUsernameInput(e.target.value)} type="text" 
+                                    onChange={e => setUsernameInput(e.target.value)} 
                                     placeholder="Search by Username"
                                     className="form-control form-control-lg red-border"
                                     required
@@ -82,7 +91,8 @@ function Profile() {
                 </Row>
             </ContainerFluid>
 
-            <FoundContacts users={users} show={show} currentUser={user}/>
+            <FoundContacts users={users} show={show} currentUser={user}/>            
+
         </>
     )
 }
