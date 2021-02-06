@@ -41,7 +41,11 @@ const Sidebar = () => {
     const [show, setShow] = useState(false);
     const [input, setInput] = useState("");
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setInput("");
+        setShow(false);
+    };
+
     const handleShow = () => setShow(true);
     const authContext = useContext(AuthContext);
     let userContacts = authContext.user
@@ -170,7 +174,7 @@ const Sidebar = () => {
                                 <ListItemText primary="My Profile" />
                             </StyledLink>
                         </ListItem>
-                        <ListItem button>
+                        {/* <ListItem button>
                             <ListItemIcon>
                                 <StyledLink>
                                     <MailboxIcon />
@@ -179,7 +183,7 @@ const Sidebar = () => {
                             <StyledLink>
                                 <ListItemText primary="Posts" />
                             </StyledLink>
-                        </ListItem>
+                        </ListItem> */}
                         <ListItem button>
                             <ListItemIcon>
                                 <StyledLink>
@@ -201,13 +205,13 @@ const Sidebar = () => {
 
                 <Modal show={show} onHide={handleClose} animation={false}>
                     <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>New Chatroom</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         
                         <form>
                             <p>
-                                Select who you want to create a chatroom with?
+                                Select who you want to create a chatroom with:
                             </p>
                             <div className='contact-list'>
                               {userContacts.contacts.map((contact, index) => (
@@ -218,11 +222,17 @@ const Sidebar = () => {
                             ))}  
                             </div>
                             
-                            <label>Please provide a name for the chatroom:</label>
-                            <input 
-                                value={input} 
-                                onChange={e => setInput(e.target.value)} type="text" 
-                            />
+                            <div className="input-group">
+                                <input 
+                                    value={input} 
+                                    onChange={e => setInput(e.target.value)} 
+                                    type="text" 
+                                    aria-label="Provide a name for the chatroom"
+                                    placeholder="Chatroom Name"
+                                    className="form-control form-control-lg green-border"
+                                />
+                            </div>
+                            
                         </form>
 
                     </Modal.Body>
