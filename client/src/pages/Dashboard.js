@@ -27,10 +27,13 @@ const Dashboard = () => {
                     </Col>
 
                     <Col size={"col-sm-8 col-md-9 col-lg-10"}>
-                        <SpotlightBanner/>
-                        <Recognition />
                         {chatroomID ? <ChatBox  /> :
-                        <Profile /> } 
+                            <>
+                                <SpotlightBanner/>
+                                <Recognition />
+                                <Profile /> 
+                            </>
+                        } 
                     </Col>
                 </Row>
             </ContainerFluid>

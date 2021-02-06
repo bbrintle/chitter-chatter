@@ -5,3 +5,35 @@
 .contact-list label {
     margin-left: 10px;
 }
+
+.modal-header, .modal-footer {
+    background-color: rgba(251, 197, 49, 0.2);
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: rgba(220,120,200,1.0);
+    border-color: rgba(220,120,200,1.0);
+}
+
+.btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus {
+    color: rgba(220,120,200,1.0);
+    border-color: rgba(220,120,200,1.0);
+    background-color: #fff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: rgba(37, 204, 247, 1.0);
+    border-color: rgba(37, 204, 247, 1.0);
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+    color: rgba(37, 204, 247, 1.0);
+    border-color: rgba(37, 204, 247, 1.0);
+    background-color: #fff;
+}
+
+.modal-body {
+    font-size: 125%;
+}
