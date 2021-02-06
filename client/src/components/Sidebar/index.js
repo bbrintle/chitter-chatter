@@ -125,11 +125,11 @@ const Sidebar = () => {
 
     //Function that handles the retrieval of getting all chatrooms currently in db.
     const getChatrooms = async() => {
-        await axios.get(`/api/chatrooms/all`)
+        await axios.get(`/api/chatrooms/${userContacts._id}`)
             .then(result => {
+                console.log(result);
                 setChatrooms(result.data);   
             });
-        
       };
 
     useEffect(() => {
