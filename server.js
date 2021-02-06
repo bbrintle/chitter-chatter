@@ -134,11 +134,23 @@ app.get("/api/messages/:chatroomID", function(req, res) {
 
 //Chatroom APIs
 // GET route for getting all Chatboxes
-app.get("/api/chatrooms/all", function(req, res) {
+app.get(`/api/chatrooms/:id`, function(req, res) {
+  console.log(req.params.id);
+  User.findById({_id: req.params.id})
+    .populate('chatrooms')
+    .exec((error, document) => {
+      if(error) {
+        console.log(error);
+      } else {
+        res.json(document.chatrooms);
+      }
+    })
+  /*
   Chatroom.find(req.body)
   .then(function(dbChatroom) {
     res.json(dbChatroom);
   });
+  */
 });
 
 // POST route for saving a new message

@@ -15,7 +15,7 @@ import { useParams } from "react-router-dom"
 
 
 const Dashboard = () => {
-    const { chatroomID} = useParams();
+    const { chatroomID } = useParams();
 
     return (
         <div className='body'>
