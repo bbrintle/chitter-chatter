@@ -95,11 +95,8 @@ const Sidebar = () => {
                 username: input.attributes.usersName.value
             })
         })
-        console.log(checkedBoxes);
-        console.log(newChatroom);
 
         await axios.post('/api/chatrooms', newChatroom).then(message => {
-            console.log(message);
         });
         //Retrieve chatrooms again.
         getChatrooms();
@@ -127,7 +124,6 @@ const Sidebar = () => {
     const getChatrooms = async() => {
         await axios.get(`/api/chatrooms/${userContacts._id}`)
             .then(result => {
-                console.log(result);
                 setChatrooms(result.data);   
             });
       };

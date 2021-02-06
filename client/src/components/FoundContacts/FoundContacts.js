@@ -17,7 +17,6 @@ function FoundContacts({ users, currentUser }) {
         currentUser.contacts.forEach(contact => {
             if((users._id === contact.userID)) {
                 offOn = true
-                console.log(offOn, "This is the true trigger")
             }
         });
 
@@ -28,14 +27,12 @@ function FoundContacts({ users, currentUser }) {
                 userEmail: users.email,
                 currentUser: currentUser
             }).then(() => {
-                console.log("testing")
                 currentUser.contacts.push({
                     userID: users._id,
                     username: users.username,
                     userEmail: users.email,
                 })
                 offOn = false 
-               console.log(offOn)
             })
             
             

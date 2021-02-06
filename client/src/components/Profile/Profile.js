@@ -22,7 +22,6 @@ function Profile() {
         e.preventDefault();
         axios.get(`/api/users/searchbyemail/${emailInput}`)
             .then(result => {
-                console.log(result)
                 setUsers(result.data);     
             });
         handleShow()
@@ -32,7 +31,6 @@ function Profile() {
         e.preventDefault();
         axios.get(`/api/users/searchbyusername/${usernameInput}`)
             .then(result => {
-                console.log(result)
                 setUsers(result.data);     
             });
         handleShow()
