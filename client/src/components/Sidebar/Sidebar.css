@@ -37,3 +37,39 @@
 .modal-body {
     font-size: 125%;
 }
+
+@media screen and (max-width: 575px) {
+    .sidebar-menu-wrapper {
+        padding-left: 165px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .sidebar-menu-wrapper {
+        padding-left: 135px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sidebar-menu-wrapper {
+        padding-left: 100px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .sidebar-menu-wrapper {
+        padding-left: 90px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .sidebar-menu-wrapper {
+        padding-left: 70px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .sidebar-menu-wrapper {
+        padding-left: 30px;
+    }
+}

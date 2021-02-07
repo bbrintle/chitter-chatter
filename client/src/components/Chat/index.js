@@ -9,6 +9,11 @@ import { useParams } from 'react-router';
 // Theme
 import styled, {ThemeContext} from 'styled-components';
 
+//Components for grid
+import Container from "../Container";
+import Row from "../Row";
+import Col from "../Col";
+
 // Emojis
 import 'emoji-mart/css/emoji-mart.css';
 import { Emoji } from 'emoji-mart';
@@ -61,11 +66,11 @@ function Chat(props) {
 
     return (
         <div className='chat'>
-            <div className="chat_header">
+
+            <div className="chat_header mt-4 mt-sm-0">
                 <Avatar />
                 <div className='chat_headerInfo'>
                     <h3>{chatroomName}</h3>
-                    <p>Last message sent: </p>
                 </div>
             </div>
 
@@ -89,33 +94,47 @@ function Chat(props) {
             </ChatWrapper>
 
             <div className="chat_footer">
-                <InsertEmoticon />
-                <form>
-                    {/* The value will be set to the state "input" 
-                        and every time the input is changed, we will set the
-                        new information to input using setInput */}
-                    <input 
-                        value={input} 
-                        onChange={e => setInput(e.target.value)} 
-                        placeholder='Type a message' type="text" 
-                    />
-                    <button className="btn btn-outline-secondary" onClick={sendMessage} type='submit'>
-                            Send a message
-                    </button>
+                {/* {<InsertEmoticon />} */}
+                <form className="my-4">
+                    <Container>
+                        <Row>
+                            <Col size="col-lg-8 col-xl-9">
+                                <div className="form-group">
+                                    {/* The value will be set to the state "input" 
+                                    and every time the input is changed, we will set the
+                                    new information to input using setInput */}
+                                    <input 
+                                        value={input} 
+                                        onChange={e => setInput(e.target.value)} 
+                                        placeholder='Type a message' type="text" 
+                                        className="form-control form-control-lg"
+                                        id="chat-input"
+                                    />
+
+                                    {/*<Mic />*/}
+
+                                    <div className="mt-4">
+                                        <Emoji emoji={{ id: 'office' }} size={35} />{" "}
+                                        <Emoji emoji={{ id: 'briefcase' }} size={35} />{" "}
+                                        <Emoji emoji={{ id: 'clock3' }} size={35} />{" "}
+                                        <Emoji emoji={{ id: 'card_index_dividers' }} size={35} />{" "}
+                                        <Emoji emoji={{ id: 'bar_chart' }} size={35} />{" "}
+                                        <Emoji emoji={{ id: 'card_index' }} size={35} />{" "}
+                                        <Emoji emoji={{ id: 'desktop_computer' }} size={35} />
+                                    </div>
+                                
+                                </div>
+                            </Col>
+
+                            <Col size="col-lg-4 col-xl-3">
+                                <button className="btn btn-outline-info btn-block btn-larger" onClick={sendMessage} type='submit'>
+                                    Send <i className="fas fa-paper-plane ml-2"></i>
+                                </button>
+                            </Col>
+                        </Row>
+                    </Container>
                 </form>
-                <Mic />
-            </div>
-
-            <br></br>
-
-            <div>
-                <Emoji emoji={{ id: 'office' }} size={35} />{" "}
-                <Emoji emoji={{ id: 'briefcase' }} size={35} />{" "}
-                <Emoji emoji={{ id: 'clock3' }} size={35} />{" "}
-                <Emoji emoji={{ id: 'card_index_dividers' }} size={35} />{" "}
-                <Emoji emoji={{ id: 'bar_chart' }} size={35} />{" "}
-                <Emoji emoji={{ id: 'card_index' }} size={35} />{" "}
-                <Emoji emoji={{ id: 'desktop_computer' }} size={35} />
+                
             </div>
 
         </div>
