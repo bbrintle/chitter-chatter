@@ -394,7 +394,7 @@ body, .MuiTypography-body1 {
     font-size: 100%;
 }
 
-.find-users-heading {
+.find-users-heading, .view-contacts-heading {
     border-bottom: 2px solid rgba(251, 197, 49, 0.7);
 }
 
