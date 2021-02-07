@@ -64,7 +64,7 @@
     font-size: small;
     color: gray;
 }
-
+/*
 .chat_footer {
     display: flex;
     justify-content: space-between;
@@ -72,32 +72,55 @@
     height: 62px;
     border-top: 1px solid lightgray;
 }
+*/
 
+/*
 .chat_footer > form {
     flex: 1;
     display: flex;
 }
+*/
 
-.chat_footer > form > input {
-    flex: 1;
+
+#chat-input {
+    /*flex: 1;*/
     outline-width: 0;
     border-radius: 30px;
-    padding: 10px;
-    margin-top: 20px;
+    /*padding: 10px;*/
+    /*margin-top: 20px;*/
     border: 1px solid rgba(120,180,120,1.0);
     font-size: 1.5rem; 
-    position: relative;
+    /*position: relative;*/
 }
 
+
+/*
 .chat_footer > form > button {
     display: none;
 }
+*/
 
 .chat_footer > .MuiSvgIcon-root {
     padding: 10px;
     color: gray;
 }
 
+.btn-larger {
+    font-size: 195%;
+}
+
+.btn-outline-info {
+    border-color: rgba(37, 204, 247, 1.0);
+    color: rgba(37, 204, 247, 1.0);
+}
+
+.btn-outline-info:hover, .btn-outline-info:active, .btn-outline:focus {
+    border-color: rgba(37, 204, 247, 1.0);
+    background-color: rgba(37, 204, 247, 1.0);
+    color: #fff;
+}
+
+/*
 @media only screen and (max-width: 1400px) {
     .chat_footer > form > button {
         display: inline-block;
@@ -120,3 +143,5 @@
         height: auto;
     }
   }
+  
+*/
