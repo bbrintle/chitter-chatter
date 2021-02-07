@@ -36,7 +36,7 @@ return (
     <HeaderWrapper>
         <Router>
           <Route exact path="/" component={Home}/>
-          <PrivateRoute exact path="/dashboard/:chatroomID" component={Dashboard}/>
+          <PrivateRoute exact path="/dashboard/:chatroomName/:chatroomID" component={Dashboard}/>
           <PrivateRoute exact path="/dashboard" component={Dashboard}/>
           <PublicRoute exact path="/login" component={Login}/>
           <PublicRoute exact path="/register" component={Register}/>
