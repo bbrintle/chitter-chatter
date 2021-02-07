@@ -84,6 +84,8 @@ const Sidebar = () => {
 
     const createChatroom = async () => {
         //See which names are checked. These users' information will be used to add them to the chatroom.
+        if (!validateCode()) return
+
         const checkedBoxes = getCheckedBoxes();
         const newChatroom = {
             users:[],
@@ -95,6 +97,13 @@ const Sidebar = () => {
                 username: input.attributes.usersName.value
             })
         })
+        //adding user to chatroom aswell
+        newChatroom.users.push({
+            userID: userContacts._id,
+            username: userContacts.username
+        })
+
+        console.log(newChatroom)
 
         await axios.post('/api/chatrooms', newChatroom).then(message => {
         });
@@ -119,6 +128,24 @@ const Sidebar = () => {
             channelChatroom.unsubscribe();
         };
       }
+
+    const validateCode = () => {
+        const TCode = input;
+        for (let i = 0; i < TCode.length; i++) {
+            let char1 = TCode.charAt(i);
+            let cc = char1.charCodeAt(0);
+            if ((cc > 47 && cc < 58) || (cc > 64 && cc < 91) || (cc > 96 && cc < 123)) {
+            } else {
+                const TCodeEle = document.getElementById("TCode")
+                const display = {
+                    display: "block"
+                }
+                TCodeEle.setAttribute("style", display)
+                return false;
+            }
+        }
+        return true;
+    }
 
     //Function that handles the retrieval of getting all chatrooms currently in db.
     const getChatrooms = async() => {
@@ -230,6 +257,12 @@ const Sidebar = () => {
                             </div>
                             
                         </form>
+                    
+                        <div className="container text-center mt-4" id="TCode" style={{display: "none"}}>
+                            <div className="alert alert-danger">
+                                Please Provide Letters Or Numbers Only.
+                            </div>
+                         </div>
 
                     </Modal.Body>
                     <Modal.Footer>
