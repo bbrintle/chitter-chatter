@@ -40,11 +40,7 @@ function Profile() {
     return (
         <>
             <div className="wrapper-flex">
-
-            {user.contacts.map((contact, index) => (
-                <ContactCard contactID={contact.userID} contactName={contact.username} contactEmail={contact.userEmail} key={index} index={index}/>
-            ))}
-
+                <ContactCard />
             </div>
 
             <ContainerFluid>
