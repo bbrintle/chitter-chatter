@@ -17,24 +17,31 @@ function Profile() {
     const [show, setShow] = useState(false);
     const { user } = useContext(AuthContext);
 
-    const handleShow = () => setShow(true);
+    //const handleShow = () => setShow(true);
 
     const searchForContactByEmail = (e) => {
         e.preventDefault();
         axios.get(`/api/users/searchbyemail/${emailInput}`)
             .then(result => {
-                setUsers(result.data);     
+                setUsers(result.data);        
+            })
+            .catch(error => {
+                console.log(error);
+                console.log("There was no user found");
             });
-        handleShow()
+        //handleShow()
     }
 
     const searchForContactByUsername = (e) => {
         e.preventDefault();
         axios.get(`/api/users/searchbyusername/${usernameInput}`)
             .then(result => {
-                setUsers(result.data);     
+                setUsers(result.data);    
+            }).catch(error => {
+                console.log(error);
+                console.log("There was no user found");
             });
-        handleShow()
+        //handleShow()
     }
 
     return (

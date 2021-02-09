@@ -91,6 +91,7 @@ const Sidebar = () => {
             users:[],
             chatroomName: input || getDefaultChatroomName(checkedBoxes)
         }
+        
         checkedBoxes.forEach(input => {
             newChatroom.users.push({
                 userID: input.attributes.usersID.value,
