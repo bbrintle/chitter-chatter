@@ -217,17 +217,11 @@ app.get("/api/chatrooms/:id", function(req, res) {
 app.get("/api/users/searchbyemail/:email", function(req, res) {
   const email = req.params.email
   User.findOne({email}, (error, user) => {
-    //Return if there was a database error.
-    if(error) {
-        return done(error);
-    }
-    //Return if no matching user exists.
-    if(!user) {
-        return done(null, false);
-    }
-    res.json(user);
+    ///Return if there was a database error.
+    if(user) {
+      res.json(user);
+    } 
   });
-
 });
 
 //User APIs
@@ -235,16 +229,10 @@ app.get("/api/users/searchbyusername/:username", function(req, res) {
   const username = req.params.username
   User.findOne({username}, (error, user) => {
     //Return if there was a database error.
-    if(error) {
-        return done(error);
-    }
-    //Return if no matching user exists.
-    if(!user) {
-        return done(null, false);
-    }
-    res.json(user);
+    if(user) {
+      res.json(user);
+    } 
   });
-
 });
 
 app.post("/api/contact/add", function(req, res) {

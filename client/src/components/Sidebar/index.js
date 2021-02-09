@@ -83,7 +83,7 @@ const Sidebar = () => {
     }
 
     const createChatroom = async () => {
-        //See which names are checked. These users' information will be used to add them to the chatroom.
+        //See which names are checked. These users' information will be used to add them to the chatroom
         if (!validateCode()) return
 
         const checkedBoxes = getCheckedBoxes();
@@ -91,6 +91,7 @@ const Sidebar = () => {
             users:[],
             chatroomName: input || getDefaultChatroomName(checkedBoxes)
         }
+        
         checkedBoxes.forEach(input => {
             newChatroom.users.push({
                 userID: input.attributes.usersID.value,
