@@ -135,7 +135,7 @@ const Sidebar = () => {
         for (let i = 0; i < TCode.length; i++) {
             let char1 = TCode.charAt(i);
             let cc = char1.charCodeAt(0);
-            if ((cc > 47 && cc < 58) || (cc > 64 && cc < 91) || (cc > 96 && cc < 123)) {
+            if ((cc > 47 && cc < 58) || (cc > 64 && cc < 91) || (cc > 96 && cc < 123) || (cc === 32)) {
             } else {
                 const TCodeEle = document.getElementById("TCode")
                 const display = {
