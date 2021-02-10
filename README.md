@@ -1,6 +1,6 @@
 # Chitter Chatter App
 
-The URL of the deployed application is [here](https://chitterchatter-app-ed.herokuapp.com/)
+The URL of the deployed application is [here](https://chitterchatter-app-mh.herokuapp.com/)
 
 <img src="client/public/assets/readme-images/chitterchatter.gif" width="600">
 
@@ -10,65 +10,36 @@ The URL of the deployed application is [here](https://chitterchatter-app-ed.hero
 
 ## Description
 
-Welcome to Chitter Chatter, a morale booster/community builder app!  We are a small group of web developers looking to create an application for small businesses to help put productivity back in the workplace with our featured chat box and many other features coming soon!
+Welcome to Chitter Chatter, a morale booster/community builder app! This application currently allows authenticated users to add other registered users as contacts, create chatrooms with contacts, and chat with those contacts. Users also have the ability to post ‘recognition’ shout-outs to other members to support a positive community atmosphere. Our team strives to expand upon this functionality to allow an organization/company to create a self-contained community to limit users to the broader team, customize ‘spotlight’ components to show organization-specific goals and messages, and provide customizable themes and tools (including but not limited to a functional dark mode).
 
 ## Table of Contents
 
-* [USER-STORY](#user-story)
-
-* [ACCEPTANCE-CRITERIA](#acceptance-criteria)
-
 * [Technology](#technology)
 
-* [Future-updates](#future-updates)
+* [Current Features](#current-features)
 
 * [Authors](#authors)
 
 * [Acknowledgements](#acknowledgements)
 
-
-## USER-STORY
-<details>
-    <summary>Click to expand</summary>
-
-AS a manager in a company considering a community builder application
-
-I WANT to be able send messages to my employees and co-workers
-
-SO THAT I can let them know I am grateful for their good work
-</details>
-
-
-## ACCEPTANCE-CRITERIA
-<details>
-    <summary>Click to expand</summary>
-
-GIVEN I am looking to communicate with my co-workers through a company chatroom
-
-WHEN I enter my message in the input field
-
-THEN I am shown that it was sent successfully
-</details>
-
-
 ## Technology
 
-* ReactJS
-* Node and Express Web Server
-* MongoDB Atlas
-* routes (GET, POST, etc.)
-* Heroku deployment
-* Passport user authentication
-* Pusher
+* React and React Context API renders components and manages state.
+* React Router used for serving pages to authorized users.
+* Node.js Back-End with Express Routing.
+* MongoDB/MongoDB Atlas stores user data with Mongoose modeling.
+* RESTful routes perform CRUD operations with database.
+* Passport and JWT Web Token used for user authentication/authorization.
+* Pusher used to establish and maintain channels for live chats.
+* Bootstrap and React Bootstrap used for styling and responsive design.
 
-## Future-updates
-### Under construction
+## Current Features
 
-* High-five reward/kudos system
-* Shoutout boards
-* Recognition posts page
-* Private message capability
-* Message comment capability
+* Public Recognitions
+* Private Chatrooms
+* User Contact List and User Search
+* Dashboard View
+* Dark Mode (Prototype)
 
 ## Authors
 
