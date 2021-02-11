@@ -54,23 +54,6 @@ function Recognition() {
             <RecSender 
             recognitions={recognitions}
             handlePusher={handlePusher}/>
-
-            {/* <RecPost 
-            profilePic={profileImage}
-            message="Shoutout to Michael for helping me with my routes"
-            timestamp="4:01PM"
-            username="areye022"
-            />
-            <RecPost 
-            profilePic={profileImage}
-            message="Eric! You're styling looks amazing! great job!"
-            timestamp="4:01PM"
-            username="areye022"/>
-            <RecPost 
-            profilePic={profileImage}
-            message="Wow! Blake, you kicked butt during todays meeting!"
-            timestamp="4:01PM"
-            username="areye022"/> */}
         </div>
       </ContainerFluid>
     )
