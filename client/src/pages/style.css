@@ -390,11 +390,10 @@ body, .MuiTypography-body1 {
     font-size: 100%;
 }
 
-.find-users-heading, .view-contacts-heading {
+.find-users-heading, .view-contacts-heading, .recognitions-heading {
     border-bottom: 2px solid rgba(251, 197, 49, 0.7);
+    letter-spacing: initial;
 }
-
-/*Media Queries*/
 
 @media screen and (max-width: 575px) {
     .login-tab, .register-tab, .user-tab, .logout-tab {

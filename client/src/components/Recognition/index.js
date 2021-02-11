@@ -6,6 +6,8 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import Pusher from 'pusher-js';
 
+//Grid components
+import ContainerFluid from "../ContainerFluid";
 
 function Recognition() {
     const [recognitions, setRecognitions] = useState([]);
@@ -44,7 +46,11 @@ function Recognition() {
   }
 
     return(
-        <div className="recognitions">
+      <ContainerFluid>
+        <h1 className="text-center my-4 main-display recognitions-heading">
+          R<span className="slightly-smaller">ECOGNITIONS</span>
+        </h1>
+        <div className="recognitions px-3 pb-4">
             <RecSender 
             recognitions={recognitions}
             handlePusher={handlePusher}/>
@@ -66,6 +72,7 @@ function Recognition() {
             timestamp="4:01PM"
             username="areye022"/> */}
         </div>
+      </ContainerFluid>
     )
 } 
 
