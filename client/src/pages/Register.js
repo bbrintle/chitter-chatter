@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import AuthService from "../Services/AuthService";
-import { AuthContext } from "../Context/AuthContext";
 
 //Import Components
 import Container from "../components/Container";

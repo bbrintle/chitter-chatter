@@ -15,7 +15,7 @@ import { useParams } from "react-router-dom"
 
 
 const Dashboard = () => {
-    const { chatroomID } = useParams();
+    const { chatroomID, userID } = useParams();
 
     return (
         <div className='body'>
@@ -28,10 +28,14 @@ const Dashboard = () => {
 
                     <Col size={"col-sm-8 col-md-9 col-lg-10"}>
                         {chatroomID ? <ChatBox  /> :
+                        userID ?
+                            <>
+                                <Profile /> 
+                            </>
+                            :
                             <>
                                 <SpotlightBanner/>
                                 <Recognition />
-                                <Profile /> 
                             </>
                         } 
                     </Col>

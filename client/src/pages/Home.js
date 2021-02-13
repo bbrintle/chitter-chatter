@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-
-import NavbarBrand from "../components/NavbarBrand";
 import LandingCarousel from "../components/LandingCarousel";
 import Jumbotron from "../components/Jumbotron";
 

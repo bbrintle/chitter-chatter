@@ -14,10 +14,7 @@ function Profile() {
     const [emailInput, setEmailInput] = useState("");
     const [usernameInput, setUsernameInput] = useState("");
     const [users, setUsers] = useState([])
-    const [show, setShow] = useState(false);
     const { user } = useContext(AuthContext);
-
-    //const handleShow = () => setShow(true);
 
     const searchForContactByEmail = (e) => {
         e.preventDefault();
@@ -29,7 +26,6 @@ function Profile() {
                 console.log(error);
                 console.log("There was no user found");
             });
-        //handleShow()
     }
 
     const searchForContactByUsername = (e) => {
@@ -41,7 +37,6 @@ function Profile() {
                 console.log(error);
                 console.log("There was no user found");
             });
-        //handleShow()
     }
 
     return (
@@ -94,7 +89,7 @@ function Profile() {
                 </Row>
             </ContainerFluid>
 
-            <FoundContacts users={users} show={show} currentUser={user}/>            
+            <FoundContacts users={users} currentUser={user}/>            
 
         </>
     )

@@ -48,7 +48,7 @@ function RecSender(props) {
                     </form>
                 </div>
             </div>
-            <div>
+            <div className='recognitions'>
                 {
                     recognitions.map((recognitions, index) => (
                         <div className={`recPost ${(index + 1) % 3 === 1 ? 'redbg' : (index + 1) % 3 === 2 ? 'greenbg' : 'bluebg'}`

@@ -1,5 +1,4 @@
 import "./recognition.css";
-import profileImage from "../../images/profileImage.jpg"
 // import styled from 'styled-components';
 import RecSender from "../RecSender/RecSender"
 import axios from 'axios'
@@ -14,11 +13,11 @@ function Recognition() {
 
 
   useEffect(() => {
-  // I wrote an async api call function inside of useEffect to help with scoping
-  async function getRecognitions() {
-    const results = await axios.get(`/api/recognitions/all`);
-    setRecognitions(results.data);
-  }
+    // I wrote an async api call function inside of useEffect to help with scoping
+    async function getRecognitions() {
+      const results = await axios.get(`/api/recognitions/all`);
+        setRecognitions(results.data);
+    }
     
     // call function to get messages, this will get called whenever the chatroom id is changed
     getRecognitions();
@@ -50,7 +49,7 @@ function Recognition() {
         <h1 className="text-center my-4 main-display recognitions-heading">
           R<span className="slightly-smaller">ECOGNITIONS</span>
         </h1>
-        <div className="recognitions px-3 pb-4">
+        <div className="px-3 pb-4">
             <RecSender 
             recognitions={recognitions}
             handlePusher={handlePusher}/>

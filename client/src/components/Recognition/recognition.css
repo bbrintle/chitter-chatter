@@ -2,33 +2,3 @@
     border-width: 1cm;
     border-color: pink;
 }
-
-.recognitions {
-    height: 300px;
-    overflow: scroll;
-    background-color: rgba(240,240,240,1.0);
-}
-
-/*Keep scrollbar visible*/
-
-.recognitions::-webkit-scrollbar {
-    -webkit-appearance: none;
-}
-
-.recognitions::-webkit-scrollbar:vertical {
-    width: 15px;
-}
-
-.recognitions::-webkit-scrollbar:horizontal {
-    height: 0px;
-}
-
-.recognitions::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: rgba(251, 197, 49, 0.7);
-}
-
-.recognitions::-webkit-scrollbar-track {
-    border-radius: 8px;
-    background-color: #fff;
-}

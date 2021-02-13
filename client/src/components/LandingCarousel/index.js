@@ -1,5 +1,4 @@
 import Carousel from 'react-bootstrap/Carousel'
-import { useState } from "react";
 
 const LandingCarousel = () => {
     return (

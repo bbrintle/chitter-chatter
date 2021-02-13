@@ -11,7 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import ChatIcon from '@material-ui/icons/Chat';
 import FaceIcon from '@material-ui/icons/Face';
-import MailboxIcon from '@material-ui/icons/MarkunreadMailbox';
+// import MailboxIcon from '@material-ui/icons/MarkunreadMailbox';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Modal from "react-bootstrap/Modal"
 import SideBarChatrooms from "../SideBarChatrooms/SideBarChatrooms";
@@ -53,9 +53,6 @@ const Sidebar = () => {
     const openModal = () => {
         handleShow();
     }
-
-    //selectedContacts = each selected contact provided in the modal
-    //users.push(selectedContacts)
 
     // Pass the checkbox name to the function
     function getCheckedBoxes() {
@@ -103,8 +100,6 @@ const Sidebar = () => {
             userID: userContacts._id,
             username: userContacts.username
         })
-
-        console.log(newChatroom)
 
         await axios.post('/api/chatrooms', newChatroom).then(message => {
         });
@@ -188,16 +183,18 @@ const Sidebar = () => {
                                 <ListItemText primary="Chatrooms" />
                             </StyledLink>
                         </ListItem>
-                        <ListItem button>
-                            <ListItemIcon>
+                        <Link to={`/dashboard/${userContacts._id}`}>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <StyledLink>
+                                        <FaceIcon />
+                                    </StyledLink>
+                                </ListItemIcon>
                                 <StyledLink>
-                                    <FaceIcon />
+                                    <ListItemText primary="My Profile" />
                                 </StyledLink>
-                            </ListItemIcon>
-                            <StyledLink>
-                                <ListItemText primary="My Profile" />
-                            </StyledLink>
-                        </ListItem>
+                            </ListItem>
+                        </Link>
                         {/* <ListItem button>
                             <ListItemIcon>
                                 <StyledLink>
@@ -275,8 +272,6 @@ const Sidebar = () => {
                     </Button>
                     </Modal.Footer>
                 </Modal>
-
-
             </div>
         </>
     );

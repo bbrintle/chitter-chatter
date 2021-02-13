@@ -1,5 +1,4 @@
 import { Avatar } from '@material-ui/core'
-import { InsertEmoticon, Mic } from '@material-ui/icons'
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
@@ -7,7 +6,7 @@ import './Chat.css';
 import { useParams } from 'react-router';
 
 // Theme
-import styled, {ThemeContext} from 'styled-components';
+import styled from 'styled-components';
 
 //Components for grid
 import Container from "../Container";
