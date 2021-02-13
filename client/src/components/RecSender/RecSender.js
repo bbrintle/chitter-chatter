@@ -4,6 +4,10 @@ import { AuthContext } from '../../Context/AuthContext';
 import "./RecSender.css"
 import axios from 'axios'
 
+//Grid Components
+import ContainerFluid from "../ContainerFluid";
+import Row from "../Row";
+import Col from "../Col";
 
 function RecSender(props) {
     const { recognitions } = props;
@@ -45,22 +49,31 @@ function RecSender(props) {
                 </div>
             </div>
             <div>
-            {recognitions.map((recognitions, index) => (
-                    <div className={`recPost ${(index + 1) % 3 === 1 ? 'redbg' : (index + 1) % 3 === 2 ? 'greenbg' : 'bluebg'}`
-            }>
-                       <div key = {index} className="post_top">
-                        <Avatar 
-                        className="post_avatar" />
-                        <div className="post_topInfo">
-                            <h3>{recognitions.name}</h3>
-                        </div>
-                        </div>
+                {
+                    recognitions.map((recognitions, index) => (
+                        <div className={`recPost ${(index + 1) % 3 === 1 ? 'redbg' : (index + 1) % 3 === 2 ? 'greenbg' : 'bluebg'}`
+                        }>
+                            <ContainerFluid>
+                                <Row>
+                                    <Col size="col-lg-4">
+                                        <div key = {index} className="post_top">
+                                            <Avatar 
+                                            className="post_avatar" />
+                                            <div className="post_topInfo">
+                                                <h3>{recognitions.name}</h3>
+                                            </div>
+                                        </div>
+                                    </Col>
 
-                        <div className="post_bottom">
-                            <p>{recognitions.recognitions}</p>
+                                    <Col size="col-lg-8">
+                                        <div className="post_bottom">
+                                            <p>{recognitions.recognitions}</p>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </ContainerFluid>
                         </div>
-                    </div>
-                ))
+                    ))
                 }
             </div>
         </div>
