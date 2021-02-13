@@ -1,6 +1,4 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
-import AuthService from "../../Services/AuthService";
 import { AuthContext } from "../../Context/AuthContext";
 
 // Theme
@@ -12,10 +10,6 @@ import Nav from "react-bootstrap/Nav";
 import NavItem from "../NavItem";
 import LogoutButton from "../LogoutButton"
 import NavbarBrand from "../NavbarBrand";
-
-import ContainerFluid from "../ContainerFluid";
-import Row from "../Row";
-import Col from "../Col";
 
 const Header = (props) => {
     const { isAuthenticated, user } = useContext(AuthContext);

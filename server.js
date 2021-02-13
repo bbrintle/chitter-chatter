@@ -135,7 +135,6 @@ app.get("/api/messages/:chatroomID", function(req, res) {
 //Chatroom APIs
 // GET route for getting all Chatboxes
 app.get(`/api/chatrooms/:id`, function(req, res) {
-  console.log(req.params.id);
   User.findById({_id: req.params.id})
     .populate('chatrooms')
     .exec((error, document) => {
@@ -145,23 +144,13 @@ app.get(`/api/chatrooms/:id`, function(req, res) {
         res.json(document.chatrooms);
       }
     })
-  /*
-  Chatroom.find(req.body)
-  .then(function(dbChatroom) {
-    res.json(dbChatroom);
-  });
-  */
 });
 
 // POST route for saving a new message
 app.post("/api/chatrooms", function(req, res) {
   /*Receive a set of user IDs/username which 
   will be used to populate their chatroom array
-  */
-  console.log(req.body.users);
-  //const newChatroom = Chatroom.create(req.body)
-  //Chatroom.save(newChatroom).then
-  
+  */  
   const newChatroom = new Chatroom(req.body);
   //Chatroom.create(req.body)
   newChatroom.save(error => {
@@ -170,9 +159,7 @@ app.post("/api/chatrooms", function(req, res) {
     } else {
       /*find the users associated with this chatroom,
       and add this ID to their chatroom array. */
-      
       req.body.users.forEach(user => {
-        console.log('this user: ' + user.userID);
         User.updateOne({
           _id: user.userID
         }, {
@@ -184,7 +171,7 @@ app.post("/api/chatrooms", function(req, res) {
           }
         })
         .then(function(chatroom) {
-          console.log(chatroom);
+          //chatroom has been updated
         });
       });
 
@@ -211,6 +198,11 @@ app.get("/api/chatrooms/:id", function(req, res) {
   });
 });
 
+//Provide a route that will remove the chatroom from the users chatroom list
+//
+//CODEHERE
+//
+
 
 
 //User APIs
@@ -235,6 +227,7 @@ app.get("/api/users/searchbyusername/:username", function(req, res) {
   });
 });
 
+//Add a contact to the users contact list
 app.post("/api/contact/add", function(req, res) {
   User.updateOne(
     {_id: req.body.currentUser._id},
@@ -249,6 +242,12 @@ app.post("/api/contact/add", function(req, res) {
     res.json(dbContacts);
   });
 })
+
+//Provide a route that will remove a contact from the users contact list
+//
+//CODEHERE
+//
+
 
 //Recognition Posts APIs
 // GET route for getting all recognition

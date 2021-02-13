@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React from 'react'
 import "./FoundContacts.css"
 
 //Grid Components
@@ -8,17 +8,17 @@ import Row from "../Row";
 import Col from "../Col";
 
 function FoundContacts({ users, currentUser }) {
-    // const [onOff, setOnOff] = useState("");
     let offOn = false;
 
-    const addContact = async () => {
-        // setOnOff("false")
-        
+    const addContact = async () => {   
         currentUser.contacts.forEach(contact => {
             if((users._id === contact.userID)) {
                 offOn = true
             }
         });
+
+        //need a conditional here that checks if the users._id is equal to the user ID of the current user. 
+        //we do not want to add ourselves to our contacts list.
 
         if(offOn === false){
             await axios.post(`/api/contact/add`, {
@@ -33,13 +33,10 @@ function FoundContacts({ users, currentUser }) {
                     userEmail: users.email,
                 })
                 offOn = false 
-            })
-            
-            
+            })     
         } else {
             console.log("Already have this contact in contacts!")
-        }
-        
+        } 
     }
 
     return (
@@ -69,6 +66,8 @@ function FoundContacts({ users, currentUser }) {
                     </div>
                 </div> 
                 : 
+                //Possibly have a widow that open and provides a scrolable box of all users???
+                //What is a better method for showing users on the site?
                 <div>
                 </div>
             }

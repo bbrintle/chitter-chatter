@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 
 const PrivateRoute = ({component: Component, roles, ...rest}) => {
-    const { isAuthenticated, user } = useContext(AuthContext);
+    const { isAuthenticated } = useContext(AuthContext);
     return(
         <Route {...rest} render={props => {
             //If user is not authenticated, redirect to the login page (from this location).

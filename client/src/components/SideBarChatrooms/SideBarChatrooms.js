@@ -1,10 +1,7 @@
 import React from 'react';
-import { useContext } from 'react';
 import { ListGroup } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import "./SideBarChatrooms.css";
-
-import styled from 'styled-components';
 
 function SideBarChatrooms({ chatrooms }) {
     return (

@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 
 const LogoutButton = () => {
 
-    const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
+    const { setIsAuthenticated, setUser } = useContext(AuthContext);
 
     //Handle logging the user out.
     const handleLogOut = () => {
